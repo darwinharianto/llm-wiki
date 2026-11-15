@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:10Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-19.md",
+    "diff": "+ ---\n+ title: '3GPP 23097-g00: Exceptional Procedures'\n+ slug: 3gpp-23097-g00-exceptional-procedures\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - network\n+ - data\n+ - subscriber\n+ - 3gpp\n+ - phase\n+ - call\n+ sources:\n+ - 2026-11-14-telequad-w01-19.md\n+ created_at: '2026-11-14T05:19:10Z'\n+ updated_at: '2026-11-14T05:19:10Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n+   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\\n+   \\ functionality of MSP Ph...\"\n+ ---\n+ \n+ # 3GPP 23097-g00: Exceptional Procedures\n+ \n+ 7.12\tExceptional Procedures 7.12.1\tRoaming into a network not supporting CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the functionality of MSP Phase 1 will be available to an MSP subscriber. The default profile subscription information shall apply to all supplementary services, excluding Call Forwarding and Call Barring, provisioned per profile. 7.12.2\tRoaming into a network not supporting CAMEL Phase 2 This subclause details MSP specific handling for roaming into a network not supporting CAMEL Phase 2. Other handling for this scenario is described in 3G TS 23.078. 7.12.2.1\tActions required on Location Update The HLR will send the outgoing call barring data and outgoing ODB data, specific to the default profile, to the VLR. 7.12.2.2\tMO call handling When an MSP subscriber roams into a network not supporting CAMEL Phase 2, the default profile will be used for all outgoing traffic. 7.12.2.3\tMT call handling"
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:17Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: 3GPP 23097-g00: Exceptional Procedures' (2026-11-14-telequad-w02-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 1)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 2)\n@@ -10,11 +10,13 @@\n - 3gpp\n - phase\n - call\n+- camel\n sources:\n - 2026-11-14-telequad-w01-19.md\n+- 2026-11-14-telequad-w02-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:10Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:17Z'\n+revision_count: 2\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:24Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 23097-g00: Exceptional Procedures \u2014 Specification Digest' (2026-11-14-telequad-w03-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 2)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 3)\n@@ -14,9 +14,10 @@\n sources:\n - 2026-11-14-telequad-w01-19.md\n - 2026-11-14-telequad-w02-19.md\n+- 2026-11-14-telequad-w03-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:17Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:24Z'\n+revision_count: 3\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:33Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from '3GPP 23097-g00: Exceptional Procedures: Extended Procedures & Parameters' (2026-11-14-telequad-w04-19.md) into existing page [[3gpp-23097-g00-exceptional-procedures]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 3)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 4)\n@@ -11,13 +11,15 @@\n - phase\n - call\n - camel\n+- profile\n sources:\n - 2026-11-14-telequad-w01-19.md\n - 2026-11-14-telequad-w02-19.md\n - 2026-11-14-telequad-w03-19.md\n+- 2026-11-14-telequad-w04-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:24Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:33Z'\n+revision_count: 4\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\\n@@ -27,3 +29,11 @@\n # 3GPP 23097-g00: Exceptional Procedures\n \n 7.12\tExceptional Procedures 7.12.1\tRoaming into a network not supporting CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the functionality of MSP Phase 1 will be available to an MSP subscriber. The default profile subscription information shall apply to all supplementary services, excluding Call Forwarding and Call Barring, provisioned per profile. 7.12.2\tRoaming into a network not supporting CAMEL Phase 2 This subclause details MSP specific handling for roaming into a network not supporting CAMEL Phase 2. Other handling for this scenario is described in 3G TS 23.078. 7.12.2.1\tActions required on Location Update The HLR will send the outgoing call barring data and outgoing ODB data, specific to the default profile, to the VLR. 7.12.2.2\tMO call handling When an MSP subscriber roams into a network not supporting CAMEL Phase 2, the default profile will be used for all outgoing traffic. 7.12.2.3\tMT call handling\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-19.md]** (3GPP 23097-g00: Exceptional Procedures: Extended Procedures & Parameters): MT calls to any profile will be received by the subscriber (subject to call forwardings and call barrings provided in the gsmSCF on the called profile), although no indication of the called profile will be received. The HLR will not allow OR, this means that for MT calls, the GMSC will always support CAMEL Phase 2, allowing the gsmSCF to invoke appropriate Call Forwardings and Call Barrings. 7.12.2.4\tMO short message handling MO short messages will be sent from and charged to the default profile. 7.12.3\tLack of availability of the Network Indication of Alerting feature If an MSP subscriber roams into a network not supporting the Network Indication of Alerting feature, or is using an MS that does not support the Network indication of Alerting feature, then the subscriber will still receive all MT calls, but no indication of the called profile will be given. Annex A (informative): Provision and Withdrawal of MSP\n+\n+## Contradictions & Tensions\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-19.md]** Potential tension/nuance noted: MT calls to any profile will be received by the subscriber (subject to call forwardings and call barrings provided in the gsmSCF on the called profile), although no indication of the called profile will be received. The HLR will not allow OR, this means that for MT calls, the GMSC will always support CAMEL Phase 2, allowing the gsmSCF to invoke appropriate Call Forwardings and Call Barrings. 7.12.2.4\tMO short message handling MO short messages will be sent from and charged to the default profile. 7.12.3\tLack of availability of the Network Indication of Alerting feature If an MSP subscriber roams into a network not supporting the Network Indication of Alerting feature, or is using an MS that does not support the Network indication of Alerting feature, then the subscriber will still receive all MT calls, but no indication of the called profile will be given. Annex A (informative): Provision and Withdrawal of MSP"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:40Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on 3GPP 23097-g00: Exceptional Procedures' (2026-11-14-telequad-w05-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 4)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 5)\n@@ -12,14 +12,16 @@\n - call\n - camel\n - profile\n+- indication\n sources:\n - 2026-11-14-telequad-w01-19.md\n - 2026-11-14-telequad-w02-19.md\n - 2026-11-14-telequad-w03-19.md\n - 2026-11-14-telequad-w04-19.md\n+- 2026-11-14-telequad-w05-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:33Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:40Z'\n+revision_count: 5\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:48Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 23097-g00: Exceptional Procedures (Protocol Summary #6)' (2026-11-14-telequad-w06-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 5)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 6)\n@@ -19,9 +19,10 @@\n - 2026-11-14-telequad-w03-19.md\n - 2026-11-14-telequad-w04-19.md\n - 2026-11-14-telequad-w05-19.md\n+- 2026-11-14-telequad-w06-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:40Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:48Z'\n+revision_count: 6\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:56Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 3GPP 23097-g00: Exceptional Procedures' (2026-11-14-telequad-w07-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 6)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 7)\n@@ -13,6 +13,8 @@\n - camel\n - profile\n - indication\n+- barrings\n+- calls\n sources:\n - 2026-11-14-telequad-w01-19.md\n - 2026-11-14-telequad-w02-19.md\n@@ -20,9 +22,10 @@\n - 2026-11-14-telequad-w04-19.md\n - 2026-11-14-telequad-w05-19.md\n - 2026-11-14-telequad-w06-19.md\n+- 2026-11-14-telequad-w07-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:48Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:56Z'\n+revision_count: 7\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:20:04Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-20' (2026-11-14-telequad-w08-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 7)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 8)\n@@ -23,9 +23,10 @@\n - 2026-11-14-telequad-w05-19.md\n - 2026-11-14-telequad-w06-19.md\n - 2026-11-14-telequad-w07-19.md\n+- 2026-11-14-telequad-w08-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:56Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:20:04Z'\n+revision_count: 8\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:12Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-20' (2026-11-14-telequad-w09-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 8)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 9)\n@@ -24,9 +24,10 @@\n - 2026-11-14-telequad-w06-19.md\n - 2026-11-14-telequad-w07-19.md\n - 2026-11-14-telequad-w08-19.md\n+- 2026-11-14-telequad-w09-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:20:04Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:12Z'\n+revision_count: 9\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:22Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: 3GPP 23097-g00: Exceptional Procedures' (2026-11-14-telequad-w10-19.md); existing synthesis in [[3gpp-23097-g00-exceptional-procedures]] already covers it.",
+    "diff": "--- a/3gpp-23097-g00-exceptional-procedures.md (rev 9)\n+++ b/3gpp-23097-g00-exceptional-procedures.md (rev 10)\n@@ -15,6 +15,7 @@\n - indication\n - barrings\n - calls\n+- supporting\n sources:\n - 2026-11-14-telequad-w01-19.md\n - 2026-11-14-telequad-w02-19.md\n@@ -25,9 +26,10 @@\n - 2026-11-14-telequad-w07-19.md\n - 2026-11-14-telequad-w08-19.md\n - 2026-11-14-telequad-w09-19.md\n+- 2026-11-14-telequad-w10-19.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:20:12Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:22Z'\n+revision_count: 10\n confidence: high\n summary: \"7.12\\tExceptional Procedures 7.12.1\\tRoaming into a network not supporting\\\n   \\ CAMEL Phase 3 When roaming into a network not supporting CAMEL Phase 3, only the\\"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:09Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-15.md",
+    "diff": "+ ---\n+ title: '3GPP 21111-f20: Contents of the Elementary Files'\n+ slug: 3gpp-21111-f20-contents-of-the-elementary-files\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - information\n+ - shall\n+ - network\n+ - service\n+ - entry\n+ - usim\n+ sources:\n+ - 2026-11-14-telequad-w01-15.md\n+ created_at: '2026-11-14T05:19:09Z'\n+ updated_at: '2026-11-14T05:19:09Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n+   \\ The USIM shall contain information elements for 3G network operations. The USIM\\\n+   \\ may contain inform...\"\n+ ---\n+ \n+ # 3GPP 21111-f20: Contents of the Elementary Files\n+ \n+ 10\tContents of the Elementary Files 10.1\tUSIM information storage requirements The USIM shall contain information elements for 3G network operations. The USIM may contain information elements related to the subscriber, 3G services and home environment or service provider related information. The UICC shall provide storage capability for the following: -\tUICC related information: In addition, the USIM shall manage and provide storage for the following information in accordance with the security requirements of clause 5: 10.2\tPhone Book A Phone Book entry consists of a record in an ADN file and, optionally, additional records which are placed in different EFs. In the latter case, a mechanism shall be defined to link all records in the same Phone Book entry. These features shall be supported by the ME while their support by the UICC is optional. 10.2.1\tSupport of two name fields per entry The support of two name fields per entry shall be specified to allow, for example, for two different representations of the same name (for example, in Japanese characters and in Latin characters)."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:16Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: 3GPP 21111-f20: Contents of the Elementary Files' (2026-11-14-telequad-w02-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 1)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 2)\n@@ -12,9 +12,10 @@\n - usim\n sources:\n - 2026-11-14-telequad-w01-15.md\n+- 2026-11-14-telequad-w02-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:09Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:16Z'\n+revision_count: 2\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:23Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 21111-f20: Contents of the Elementary Files \u2014 Specification Digest' (2026-11-14-telequad-w03-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 2)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 3)\n@@ -13,9 +13,10 @@\n sources:\n - 2026-11-14-telequad-w01-15.md\n - 2026-11-14-telequad-w02-15.md\n+- 2026-11-14-telequad-w03-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:16Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:23Z'\n+revision_count: 3\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:31Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from '3GPP 21111-f20: Contents of the Elementary Files: Extended Procedures & Parameters' (2026-11-14-telequad-w04-15.md) into existing page [[3gpp-21111-f20-contents-of-the-elementary-files]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 3)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 4)\n@@ -10,13 +10,15 @@\n - service\n - entry\n - usim\n+- support\n sources:\n - 2026-11-14-telequad-w01-15.md\n - 2026-11-14-telequad-w02-15.md\n - 2026-11-14-telequad-w03-15.md\n+- 2026-11-14-telequad-w04-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:23Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:31Z'\n+revision_count: 4\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\\n@@ -26,3 +28,7 @@\n # 3GPP 21111-f20: Contents of the Elementary Files\n \n 10\tContents of the Elementary Files 10.1\tUSIM information storage requirements The USIM shall contain information elements for 3G network operations. The USIM may contain information elements related to the subscriber, 3G services and home environment or service provider related information. The UICC shall provide storage capability for the following: -\tUICC related information: In addition, the USIM shall manage and provide storage for the following information in accordance with the security requirements of clause 5: 10.2\tPhone Book A Phone Book entry consists of a record in an ADN file and, optionally, additional records which are placed in different EFs. In the latter case, a mechanism shall be defined to link all records in the same Phone Book entry. These features shall be supported by the ME while their support by the UICC is optional. 10.2.1\tSupport of two name fields per entry The support of two name fields per entry shall be specified to allow, for example, for two different representations of the same name (for example, in Japanese characters and in Latin characters).\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-15.md]** (3GPP 21111-f20: Contents of the Elementary Files: Extended Procedures & Parameters): 10.2.2\tSupport of multiple phone numbers per entry The support of multiple phone numbers per entry shall be specified, for example, office, home, fax, mobile or pager. In addition to that, information for identifying those attributes are needed. 10.2.3\tSupport of email address The support of email addresses linked to Phone Book entries shall be specified. In addition to that, information for identifying these addresses is needed. 10.2.4\tSupport of user definable groupings The specification shall support the grouping of Phone Book entries into groups defined by the user, for example, business and private. 10.2.5\tSupport of hidden entries The specification shall support means of marking Phone Book entries as \"hidden\". 10.2.6\tNumber of entries The specification shall support storage of at least 500 entries. 10.3\tStorage of call details The specification shall support provision of storage for call detail information. The call detail information consists of the following attributes: Call detail attributes are optional. A value to mark them as \"undefined\" shall be available."
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:39Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on 3GPP 21111-f20: Contents of the Elementary Files' (2026-11-14-telequad-w05-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 4)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 5)\n@@ -11,14 +11,18 @@\n - entry\n - usim\n - support\n+- call\n+- entries\n+- phone\n sources:\n - 2026-11-14-telequad-w01-15.md\n - 2026-11-14-telequad-w02-15.md\n - 2026-11-14-telequad-w03-15.md\n - 2026-11-14-telequad-w04-15.md\n+- 2026-11-14-telequad-w05-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:31Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:39Z'\n+revision_count: 5\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:47Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 21111-f20: Contents of the Elementary Files (Protocol Summary #6)' (2026-11-14-telequad-w06-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 5)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 6)\n@@ -20,9 +20,10 @@\n - 2026-11-14-telequad-w03-15.md\n - 2026-11-14-telequad-w04-15.md\n - 2026-11-14-telequad-w05-15.md\n+- 2026-11-14-telequad-w06-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:39Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:47Z'\n+revision_count: 6\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:54Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 3GPP 21111-f20: Contents of the Elementary Files' (2026-11-14-telequad-w07-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 6)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 7)\n@@ -14,6 +14,9 @@\n - call\n - entries\n - phone\n+- 3gpp\n+- contents\n+- elementary\n sources:\n - 2026-11-14-telequad-w01-15.md\n - 2026-11-14-telequad-w02-15.md\n@@ -21,9 +24,10 @@\n - 2026-11-14-telequad-w04-15.md\n - 2026-11-14-telequad-w05-15.md\n - 2026-11-14-telequad-w06-15.md\n+- 2026-11-14-telequad-w07-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:47Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:54Z'\n+revision_count: 7\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:20:02Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-16' (2026-11-14-telequad-w08-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 7)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 8)\n@@ -25,9 +25,10 @@\n - 2026-11-14-telequad-w05-15.md\n - 2026-11-14-telequad-w06-15.md\n - 2026-11-14-telequad-w07-15.md\n+- 2026-11-14-telequad-w08-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:19:54Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:20:02Z'\n+revision_count: 8\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:11Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-16' (2026-11-14-telequad-w09-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 8)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 9)\n@@ -26,9 +26,10 @@\n - 2026-11-14-telequad-w06-15.md\n - 2026-11-14-telequad-w07-15.md\n - 2026-11-14-telequad-w08-15.md\n+- 2026-11-14-telequad-w09-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:20:02Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:11Z'\n+revision_count: 9\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:20Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: 3GPP 21111-f20: Contents of the Elementary Files' (2026-11-14-telequad-w10-15.md); existing synthesis in [[3gpp-21111-f20-contents-of-the-elementary-files]] already covers it.",
+    "diff": "--- a/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 9)\n+++ b/3gpp-21111-f20-contents-of-the-elementary-files.md (rev 10)\n@@ -17,6 +17,7 @@\n - 3gpp\n - contents\n - elementary\n+- storage\n sources:\n - 2026-11-14-telequad-w01-15.md\n - 2026-11-14-telequad-w02-15.md\n@@ -27,9 +28,10 @@\n - 2026-11-14-telequad-w07-15.md\n - 2026-11-14-telequad-w08-15.md\n - 2026-11-14-telequad-w09-15.md\n+- 2026-11-14-telequad-w10-15.md\n created_at: '2026-11-14T05:19:09Z'\n-updated_at: '2026-11-14T05:20:11Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:20Z'\n+revision_count: 10\n confidence: high\n summary: \"10\\tContents of the Elementary Files 10.1\\tUSIM information storage requirements\\\n   \\ The USIM shall contain information elements for 3G network operations. The USIM\\"
+  }
+]

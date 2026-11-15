@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:07Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-11.md",
+    "diff": "+ ---\n+ title: LTE ue-Category\n+ slug: lte-ue-category\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - downlink\n+ - information\n+ - device\n+ - level\n+ - category\n+ - categories\n+ sources:\n+ - 2026-11-14-telequad-w01-11.md\n+ created_at: '2026-11-14T05:19:07Z'\n+ updated_at: '2026-11-14T05:19:07Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: Category information is used to allow the eNB to communicate effectively\n+   with all the UEs connected to it. The ue-Category defines a combined uplink and\n+   downlink capability as s...\n+ ---\n+ \n+ # LTE ue-Category\n+ \n+ Category information is used to allow the eNB to communicate effectively with all the UEs connected to it. The ue-Category defines a combined uplink and downlink capability as specified in 3GPP TS36.306. Downlink physical layer parameter values set by the field ue-Category (36.306 table 4.1-1): Uplink physical layer parameter values set by the field ue-Category (36.306 table 4.1-2): \"\u2026LTE utilises UE or User Equipment categories or classes to define the performance specifications an enable base stations to be able to communicate effectively with them knowing their performance levels\"\u2026.Read the article \"\u2026Independent from the LTE-Advanced technology components, new UE categories 6, 7 and 8 are added into LTE Release 10\u2026These categories describe to a certain extend the devices capabilities."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:14Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: LTE ue-Category' (2026-11-14-telequad-w02-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 1)\n+++ b/lte-ue-category.md (rev 2)\n@@ -10,11 +10,14 @@\n - level\n - category\n - categories\n+- 3gpp\n+- communicate\n sources:\n - 2026-11-14-telequad-w01-11.md\n+- 2026-11-14-telequad-w02-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:07Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:14Z'\n+revision_count: 2\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:22Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'LTE ue-Category \u2014 Specification Digest' (2026-11-14-telequad-w03-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 2)\n+++ b/lte-ue-category.md (rev 3)\n@@ -15,9 +15,10 @@\n sources:\n - 2026-11-14-telequad-w01-11.md\n - 2026-11-14-telequad-w02-11.md\n+- 2026-11-14-telequad-w03-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:14Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:22Z'\n+revision_count: 3\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:29Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'LTE ue-Category: Extended Procedures & Parameters' (2026-11-14-telequad-w04-11.md) into existing page [[lte-ue-category]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/lte-ue-category.md (rev 3)\n+++ b/lte-ue-category.md (rev 4)\n@@ -12,13 +12,16 @@\n - categories\n - 3gpp\n - communicate\n+- data\n+- mimo\n sources:\n - 2026-11-14-telequad-w01-11.md\n - 2026-11-14-telequad-w02-11.md\n - 2026-11-14-telequad-w03-11.md\n+- 2026-11-14-telequad-w04-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:22Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:29Z'\n+revision_count: 4\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and\n@@ -28,3 +31,11 @@\n # LTE ue-Category\n \n Category information is used to allow the eNB to communicate effectively with all the UEs connected to it. The ue-Category defines a combined uplink and downlink capability as specified in 3GPP TS36.306. Downlink physical layer parameter values set by the field ue-Category (36.306 table 4.1-1): Uplink physical layer parameter values set by the field ue-Category (36.306 table 4.1-2): \"\u2026LTE utilises UE or User Equipment categories or classes to define the performance specifications an enable base stations to be able to communicate effectively with them knowing their performance levels\"\u2026.Read the article \"\u2026Independent from the LTE-Advanced technology components, new UE categories 6, 7 and 8 are added into LTE Release 10\u2026These categories describe to a certain extend the devices capabilities.\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-11.md]** (LTE ue-Category: Extended Procedures & Parameters): For instance categories 6 and 7 support MIMO 2x2 and/or 4x4 and go up to data rates of 300 Mbps. Whereas category 8 is the highest category, supporting 8x8 MIMO leading to a peak data rate of 3 Gbps, if the maximum of five component carriers are aggregated. Uplink category 8 leads to 1.5 Gbps data rate using 4x4 MIMO and 64QAM modulation\u2026\"\u2026Download the White Paper\n+\n+## Contradictions & Tensions\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-11.md]** Potential tension/nuance noted: For instance categories 6 and 7 support MIMO 2x2 and/or 4x4 and go up to data rates of 300 Mbps. Whereas category 8 is the highest category, supporting 8x8 MIMO leading to a peak data rate of 3 Gbps, if the maximum of five component carriers are aggregated. Uplink category 8 leads to 1.5 Gbps data rate using 4x4 MIMO and 64QAM modulation\u2026\"\u2026Download the White Paper"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:37Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on LTE ue-Category' (2026-11-14-telequad-w05-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 4)\n+++ b/lte-ue-category.md (rev 5)\n@@ -14,14 +14,16 @@\n - communicate\n - data\n - mimo\n+- gbps\n sources:\n - 2026-11-14-telequad-w01-11.md\n - 2026-11-14-telequad-w02-11.md\n - 2026-11-14-telequad-w03-11.md\n - 2026-11-14-telequad-w04-11.md\n+- 2026-11-14-telequad-w05-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:29Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:37Z'\n+revision_count: 5\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:45Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'LTE ue-Category (Protocol Summary #6)' (2026-11-14-telequad-w06-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 5)\n+++ b/lte-ue-category.md (rev 6)\n@@ -21,9 +21,10 @@\n - 2026-11-14-telequad-w03-11.md\n - 2026-11-14-telequad-w04-11.md\n - 2026-11-14-telequad-w05-11.md\n+- 2026-11-14-telequad-w06-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:37Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:45Z'\n+revision_count: 6\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:53Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 LTE ue-Category' (2026-11-14-telequad-w07-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 6)\n+++ b/lte-ue-category.md (rev 7)\n@@ -22,9 +22,10 @@\n - 2026-11-14-telequad-w04-11.md\n - 2026-11-14-telequad-w05-11.md\n - 2026-11-14-telequad-w06-11.md\n+- 2026-11-14-telequad-w07-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:45Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:53Z'\n+revision_count: 7\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:20:01Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-12' (2026-11-14-telequad-w08-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 7)\n+++ b/lte-ue-category.md (rev 8)\n@@ -23,9 +23,10 @@\n - 2026-11-14-telequad-w05-11.md\n - 2026-11-14-telequad-w06-11.md\n - 2026-11-14-telequad-w07-11.md\n+- 2026-11-14-telequad-w08-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:19:53Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:20:01Z'\n+revision_count: 8\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:09Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-12' (2026-11-14-telequad-w09-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 8)\n+++ b/lte-ue-category.md (rev 9)\n@@ -24,9 +24,10 @@\n - 2026-11-14-telequad-w06-11.md\n - 2026-11-14-telequad-w07-11.md\n - 2026-11-14-telequad-w08-11.md\n+- 2026-11-14-telequad-w09-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:20:01Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:09Z'\n+revision_count: 9\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:18Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: LTE ue-Category' (2026-11-14-telequad-w10-11.md); existing synthesis in [[lte-ue-category]] already covers it.",
+    "diff": "--- a/lte-ue-category.md (rev 9)\n+++ b/lte-ue-category.md (rev 10)\n@@ -25,9 +25,10 @@\n - 2026-11-14-telequad-w07-11.md\n - 2026-11-14-telequad-w08-11.md\n - 2026-11-14-telequad-w09-11.md\n+- 2026-11-14-telequad-w10-11.md\n created_at: '2026-11-14T05:19:07Z'\n-updated_at: '2026-11-14T05:20:09Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:18Z'\n+revision_count: 10\n confidence: high\n summary: Category information is used to allow the eNB to communicate effectively\n   with all the UEs connected to it. The ue-Category defines a combined uplink and"
+  }
+]

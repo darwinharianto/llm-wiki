@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:08Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-12.md",
+    "diff": "+ ---\n+ title: 'IoT: LoRa'\n+ slug: iot-lora\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - power\n+ - access\n+ - data\n+ - each\n+ - network\n+ - lora\n+ sources:\n+ - 2026-11-14-telequad-w01-12.md\n+ created_at: '2026-11-14T05:19:08Z'\n+ updated_at: '2026-11-14T05:19:08Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n+   where the word LoRa came from.. but many say \"the name LoRa came from Long range\n+   low power Radio Net...\n+ ---\n+ \n+ # IoT: LoRa\n+ \n+ LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly where the word LoRa came from.. but many say \"the name LoRa came from Long range low power Radio Network\". As mentioned, this is a kind of WAN (Wide Area Network), meaning it would have relatively wide coverage. To provide the wide coverage, it forms a kind of network system which is similar to cellular network. As you see in the following illustration, it has a small central access unit called LoRa Gateway (this is similar to Basestation in cellular system). Around the Gateway are many devices called LoRa end node (this is like a mobile phones). Each of these end unit communicate with a Gateway and the Gateway conveys the user data between the end Unit and Network Server (this is like a core network in cellular system)."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:15Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: IoT: LoRa' (2026-11-14-telequad-w02-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 1)\n+++ b/iot-lora.md (rev 2)\n@@ -10,11 +10,15 @@\n - each\n - network\n - lora\n+- 3gpp\n+- gateway\n+- wide\n sources:\n - 2026-11-14-telequad-w01-12.md\n+- 2026-11-14-telequad-w02-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:08Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:15Z'\n+revision_count: 2\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:22Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'IoT: LoRa \u2014 Specification Digest' (2026-11-14-telequad-w03-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 2)\n+++ b/iot-lora.md (rev 3)\n@@ -16,9 +16,10 @@\n sources:\n - 2026-11-14-telequad-w01-12.md\n - 2026-11-14-telequad-w02-12.md\n+- 2026-11-14-telequad-w03-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:15Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:22Z'\n+revision_count: 3\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:30Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'IoT: LoRa: Extended Procedures & Parameters' (2026-11-14-telequad-w04-12.md) into existing page [[iot-lora]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/iot-lora.md (rev 3)\n+++ b/iot-lora.md (rev 4)\n@@ -17,9 +17,10 @@\n - 2026-11-14-telequad-w01-12.md\n - 2026-11-14-telequad-w02-12.md\n - 2026-11-14-telequad-w03-12.md\n+- 2026-11-14-telequad-w04-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:22Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:30Z'\n+revision_count: 4\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range\n@@ -29,3 +30,7 @@\n # IoT: LoRa\n \n LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly where the word LoRa came from.. but many say \"the name LoRa came from Long range low power Radio Network\". As mentioned, this is a kind of WAN (Wide Area Network), meaning it would have relatively wide coverage. To provide the wide coverage, it forms a kind of network system which is similar to cellular network. As you see in the following illustration, it has a small central access unit called LoRa Gateway (this is similar to Basestation in cellular system). Around the Gateway are many devices called LoRa end node (this is like a mobile phones). Each of these end unit communicate with a Gateway and the Gateway conveys the user data between the end Unit and Network Server (this is like a core network in cellular system).\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-12.md]** (IoT: LoRa: Extended Procedures & Parameters): In Jul 2017, SKT (a Network Operator in South Korea) deployed the nation wide IoT network based on LoRa. The overall network configuration is as follows (This illustration is based on a presentation in Ref [6]) [8] #115 How to build a LoRa / LoraWAN Gateway and connect it to TTN? Using an IC880a Board [10] #124 Cheap LoRa Gateway: How to Build with one with Raspberry Pi and Dragino"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:38Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on IoT: LoRa' (2026-11-14-telequad-w05-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 4)\n+++ b/iot-lora.md (rev 5)\n@@ -13,14 +13,17 @@\n - 3gpp\n - gateway\n - wide\n+- based\n+- build\n sources:\n - 2026-11-14-telequad-w01-12.md\n - 2026-11-14-telequad-w02-12.md\n - 2026-11-14-telequad-w03-12.md\n - 2026-11-14-telequad-w04-12.md\n+- 2026-11-14-telequad-w05-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:30Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:38Z'\n+revision_count: 5\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:45Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'IoT: LoRa (Protocol Summary #6)' (2026-11-14-telequad-w06-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 5)\n+++ b/iot-lora.md (rev 6)\n@@ -21,9 +21,10 @@\n - 2026-11-14-telequad-w03-12.md\n - 2026-11-14-telequad-w04-12.md\n - 2026-11-14-telequad-w05-12.md\n+- 2026-11-14-telequad-w06-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:38Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:45Z'\n+revision_count: 6\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:53Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 IoT: LoRa' (2026-11-14-telequad-w07-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 6)\n+++ b/iot-lora.md (rev 7)\n@@ -22,9 +22,10 @@\n - 2026-11-14-telequad-w04-12.md\n - 2026-11-14-telequad-w05-12.md\n - 2026-11-14-telequad-w06-12.md\n+- 2026-11-14-telequad-w07-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:45Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:53Z'\n+revision_count: 7\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:20:01Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-13' (2026-11-14-telequad-w08-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 7)\n+++ b/iot-lora.md (rev 8)\n@@ -23,9 +23,10 @@\n - 2026-11-14-telequad-w05-12.md\n - 2026-11-14-telequad-w06-12.md\n - 2026-11-14-telequad-w07-12.md\n+- 2026-11-14-telequad-w08-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:53Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:20:01Z'\n+revision_count: 8\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:10Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-13' (2026-11-14-telequad-w09-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 8)\n+++ b/iot-lora.md (rev 9)\n@@ -24,9 +24,10 @@\n - 2026-11-14-telequad-w06-12.md\n - 2026-11-14-telequad-w07-12.md\n - 2026-11-14-telequad-w08-12.md\n+- 2026-11-14-telequad-w09-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:20:01Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:10Z'\n+revision_count: 9\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:19Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: IoT: LoRa' (2026-11-14-telequad-w10-12.md); existing synthesis in [[iot-lora]] already covers it.",
+    "diff": "--- a/iot-lora.md (rev 9)\n+++ b/iot-lora.md (rev 10)\n@@ -25,9 +25,10 @@\n - 2026-11-14-telequad-w07-12.md\n - 2026-11-14-telequad-w08-12.md\n - 2026-11-14-telequad-w09-12.md\n+- 2026-11-14-telequad-w10-12.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:20:10Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:19Z'\n+revision_count: 10\n confidence: high\n summary: LoRa is a kind of LPWAN (Low Power Wide Area Network). I am not sure exactly\n   where the word LoRa came from.. but many say \"the name LoRa came from Long range"
+  }
+]

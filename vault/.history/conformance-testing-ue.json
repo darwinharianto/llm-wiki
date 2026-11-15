@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:10Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-18.md",
+    "diff": "+ ---\n+ title: Conformance Testing (UE)\n+ slug: conformance-testing-ue\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - group\n+ - radio\n+ - 3gpp\n+ - test\n+ - cases\n+ - conformance\n+ sources:\n+ - 2026-11-14-telequad-w01-18.md\n+ created_at: '2026-11-14T05:19:10Z'\n+ updated_at: '2026-11-14T05:19:10Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n+   made significant progress during the recent Plenary meeting (#42), in Athens, with\n+   a set of LTE related...\n+ ---\n+ \n+ # Conformance Testing (UE)\n+ \n+ 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing, made significant progress during the recent Plenary meeting (#42), in Athens, with a set of LTE related test specifications being approved in Release 8 of the standard. Spectacular progress has been made to make these Radio Frequency and Signalling Protocol conformance test cases available so soon after the LTE core specifications. Supporting the 3GPP effort is a team of experts in Special Task Force 160 (STF 160), funded by 3GPP and volunteer companies. The role of STF 160 is to develop the reference TTCN code that enables the verification of the signalling protocol test cases."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:17Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: Conformance Testing (UE)' (2026-11-14-telequad-w02-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 1)\n+++ b/conformance-testing-ue.md (rev 2)\n@@ -12,9 +12,10 @@\n - conformance\n sources:\n - 2026-11-14-telequad-w01-18.md\n+- 2026-11-14-telequad-w02-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:10Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:17Z'\n+revision_count: 2\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:24Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Conformance Testing (UE) \u2014 Specification Digest' (2026-11-14-telequad-w03-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 2)\n+++ b/conformance-testing-ue.md (rev 3)\n@@ -13,9 +13,10 @@\n sources:\n - 2026-11-14-telequad-w01-18.md\n - 2026-11-14-telequad-w02-18.md\n+- 2026-11-14-telequad-w03-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:17Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:24Z'\n+revision_count: 3\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:32Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'Conformance Testing (UE): Extended Procedures & Parameters' (2026-11-14-telequad-w04-18.md) into existing page [[conformance-testing-ue]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/conformance-testing-ue.md (rev 3)\n+++ b/conformance-testing-ue.md (rev 4)\n@@ -10,13 +10,15 @@\n - test\n - cases\n - conformance\n+- ran5\n sources:\n - 2026-11-14-telequad-w01-18.md\n - 2026-11-14-telequad-w02-18.md\n - 2026-11-14-telequad-w03-18.md\n+- 2026-11-14-telequad-w04-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:24Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:32Z'\n+revision_count: 4\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with\n@@ -26,3 +28,7 @@\n # Conformance Testing (UE)\n \n 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing, made significant progress during the recent Plenary meeting (#42), in Athens, with a set of LTE related test specifications being approved in Release 8 of the standard. Spectacular progress has been made to make these Radio Frequency and Signalling Protocol conformance test cases available so soon after the LTE core specifications. Supporting the 3GPP effort is a team of experts in Special Task Force 160 (STF 160), funded by 3GPP and volunteer companies. The role of STF 160 is to develop the reference TTCN code that enables the verification of the signalling protocol test cases.\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-18.md]** (Conformance Testing (UE): Extended Procedures & Parameters): 2009 is set to exceed all previous years' efforts, as the demand for LTE and HSPA test cases adds to the perennial maintenance of existing test suites. RAN5 is working to ensure the tests fully match market requirements; by making sufficient tests available for the early LTE devices. RAN5 is now going into overdrive, to meet demand, by doubling the number of meetings. The group is also maintaining very close ties with the Global Certification Forum (GCF Ltd) to ensure that market requirements are precisely met, thus promoting confidence in the test platforms and ensuring that no time is lost developing lower priority tests out of order. Phil Brown, RAN 5 Chairman, NTT DOCOMO, said: \"It is going to be a very busy 2 years for RAN5, we are attempting to meet the demands of both Release 7 & 8 simultaneously and there is little prospect of the pace lessening as the core specifications for LTE-Advanced gain momentum over the next 12 months.\""
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:40Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on Conformance Testing (UE)' (2026-11-14-telequad-w05-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 4)\n+++ b/conformance-testing-ue.md (rev 5)\n@@ -11,14 +11,19 @@\n - cases\n - conformance\n - ran5\n+- addendum\n+- both\n+- tests\n+- demand\n sources:\n - 2026-11-14-telequad-w01-18.md\n - 2026-11-14-telequad-w02-18.md\n - 2026-11-14-telequad-w03-18.md\n - 2026-11-14-telequad-w04-18.md\n+- 2026-11-14-telequad-w05-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:32Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:40Z'\n+revision_count: 5\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:48Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Conformance Testing (UE) (Protocol Summary #6)' (2026-11-14-telequad-w06-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 5)\n+++ b/conformance-testing-ue.md (rev 6)\n@@ -21,9 +21,10 @@\n - 2026-11-14-telequad-w03-18.md\n - 2026-11-14-telequad-w04-18.md\n - 2026-11-14-telequad-w05-18.md\n+- 2026-11-14-telequad-w06-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:40Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:48Z'\n+revision_count: 6\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:55Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 Conformance Testing (UE)' (2026-11-14-telequad-w07-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 6)\n+++ b/conformance-testing-ue.md (rev 7)\n@@ -15,6 +15,7 @@\n - both\n - tests\n - demand\n+- available\n sources:\n - 2026-11-14-telequad-w01-18.md\n - 2026-11-14-telequad-w02-18.md\n@@ -22,9 +23,10 @@\n - 2026-11-14-telequad-w04-18.md\n - 2026-11-14-telequad-w05-18.md\n - 2026-11-14-telequad-w06-18.md\n+- 2026-11-14-telequad-w07-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:48Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:55Z'\n+revision_count: 7\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:20:04Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-19' (2026-11-14-telequad-w08-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 7)\n+++ b/conformance-testing-ue.md (rev 8)\n@@ -24,9 +24,10 @@\n - 2026-11-14-telequad-w05-18.md\n - 2026-11-14-telequad-w06-18.md\n - 2026-11-14-telequad-w07-18.md\n+- 2026-11-14-telequad-w08-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:19:55Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:20:04Z'\n+revision_count: 8\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:12Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-19' (2026-11-14-telequad-w09-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 8)\n+++ b/conformance-testing-ue.md (rev 9)\n@@ -25,9 +25,10 @@\n - 2026-11-14-telequad-w06-18.md\n - 2026-11-14-telequad-w07-18.md\n - 2026-11-14-telequad-w08-18.md\n+- 2026-11-14-telequad-w09-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:20:04Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:12Z'\n+revision_count: 9\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:21Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: Conformance Testing (UE)' (2026-11-14-telequad-w10-18.md); existing synthesis in [[conformance-testing-ue]] already covers it.",
+    "diff": "--- a/conformance-testing-ue.md (rev 9)\n+++ b/conformance-testing-ue.md (rev 10)\n@@ -16,6 +16,7 @@\n - tests\n - demand\n - available\n+- specifications\n sources:\n - 2026-11-14-telequad-w01-18.md\n - 2026-11-14-telequad-w02-18.md\n@@ -26,9 +27,10 @@\n - 2026-11-14-telequad-w07-18.md\n - 2026-11-14-telequad-w08-18.md\n - 2026-11-14-telequad-w09-18.md\n+- 2026-11-14-telequad-w10-18.md\n created_at: '2026-11-14T05:19:10Z'\n-updated_at: '2026-11-14T05:20:12Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:21Z'\n+revision_count: 10\n confidence: high\n summary: 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing,\n   made significant progress during the recent Plenary meeting (#42), in Athens, with"
+  }
+]

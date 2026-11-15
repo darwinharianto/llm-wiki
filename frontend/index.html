@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem("color-scheme") ?? "light dark";
+    } catch (_) {}
+  </script>
+  <title>LLM Wiki — Self-Maintaining Knowledge Base</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◈</span>
+        <div class="brand-text">
+          <h1>LLM Wiki</h1>
+          <p class="brand-subtitle">Ever-Evolving Self-Maintaining Knowledge Base</p>
+        </div>
+      </div>
+
+      <div class="topbar-metrics">
+        <span class="metric-pill" id="metric-pages" title="Compiled wiki pages">0 pages</span>
+        <span class="metric-pill" id="metric-raw" title="Immutable raw sources">0 raw</span>
+        <button type="button" class="metric-pill health-pill" id="btn-health-pill" title="Open Self-Maintenance Health Center">
+          Health: --%
+        </button>
+        <button type="button" class="metric-pill" id="btn-telemetry-pill" title="Open LLM Telemetry, Token Usage &amp; Cost Dashboard">
+          0 tok · $0.0000
+        </button>
+        <span class="metric-pill provider-pill" id="metric-provider">local_smart</span>
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" class="btn btn-primary" id="btn-open-ingest">+ Ingest &amp; Update</button>
+        <button type="button" class="btn btn-secondary" id="btn-open-settings">Settings</button>
+      </div>
+    </header>
+
+    <!-- Main 3-Column IDE Workspace -->
+    <div class="workspace">
+      <!-- Left Sidebar: Search & Vault Explorer -->
+      <aside class="sidebar-left" aria-label="Knowledge Vault Explorer">
+        <search class="search-box">
+          <label for="wiki-search-input" class="sr-only">Hybrid similarity search across wiki</label>
+          <input
+            type="search"
+            id="wiki-search-input"
+            placeholder="Hybrid search (BM25 + TF-IDF + Graph)…"
+            autocomplete="off"
+          >
+        </search>
+
+        <div id="search-results-panel" class="search-results hidden" aria-live="polite"></div>
+
+        <nav class="left-tabs" aria-label="Workspace Sections">
+          <button type="button" class="tab-btn active" data-view="graph">Graph View</button>
+          <button type="button" class="tab-btn" data-view="reader">Reader</button>
+          <button type="button" class="tab-btn" data-view="ingest">Ingest</button>
+          <button type="button" class="tab-btn" data-view="lint">Self-Maintain</button>
+          <button type="button" class="tab-btn" data-view="vault">Index &amp; Log</button>
+        </nav>
+
+        <div class="explorer-scroll">
+          <div id="explorer-tree" class="explorer-tree"></div>
+        </div>
+      </aside>
+
+      <!-- Center Stage: Switchable Views -->
+      <main class="main-stage">
+        <!-- View 1: Force-Directed Knowledge Graph -->
+        <section id="view-graph" class="stage-view active" aria-labelledby="graph-heading">
+          <div class="stage-toolbar">
+            <h2 id="graph-heading">Knowledge Graph</h2>
+            <div class="toolbar-controls">
+              <label class="toggle-chip">
+                <input type="checkbox" id="toggle-semantic-edges" checked>
+                <span>Semantic similarity edges</span>
+              </label>
+              <select id="filter-graph-category" aria-label="Filter graph by category">
+                <option value="all">All categories</option>
+                <option value="concepts">Concepts</option>
+                <option value="entities">Entities</option>
+                <option value="sources">Sources</option>
+                <option value="syntheses">Syntheses</option>
+              </select>
+              <button type="button" class="btn btn-sm" id="btn-reset-graph">Reset Zoom</button>
+            </div>
+          </div>
+
+          <div class="graph-canvas-wrap">
+            <canvas id="graph-canvas" aria-label="Interactive force-directed knowledge graph"></canvas>
+            <div class="graph-legend" aria-label="Graph legend">
+              <span><i class="dot cat-concepts"></i> Concepts</span>
+              <span><i class="dot cat-entities"></i> Entities</span>
+              <span><i class="dot cat-sources"></i> Sources</span>
+              <span><i class="dot cat-syntheses"></i> Syntheses</span>
+              <span><i class="line-solid"></i> [[Wikilink]]</span>
+              <span><i class="line-dashed"></i> Similarity</span>
+            </div>
+            <div id="graph-hover-card" class="graph-hover-card hidden"></div>
+          </div>
+        </section>
+
+        <!-- View 2: Wiki Page Reader, Editor, Backlinks & Revision Diffs -->
+        <section id="view-reader" class="stage-view" aria-labelledby="reader-title">
+          <div class="stage-toolbar">
+            <div class="reader-header-meta">
+              <span class="cat-badge" id="reader-category">concepts</span>
+              <h2 id="reader-title">Select a wiki page</h2>
+            </div>
+            <div class="toolbar-controls">
+              <button type="button" class="btn btn-sm" id="btn-edit-page">Edit Markdown</button>
+              <button type="button" class="btn btn-sm" id="btn-view-history">Revision History</button>
+            </div>
+          </div>
+
+          <div class="reader-layout">
+            <article class="reader-article" id="reader-article">
+              <div id="reader-frontmatter" class="frontmatter-bar"></div>
+              <div id="reader-rendered-body" class="markdown-body">
+                <p class="muted">Choose a page from the Explorer or click a node in the Knowledge Graph.</p>
+              </div>
+              <div id="reader-editor-wrap" class="editor-wrap hidden">
+                <label for="editor-textarea" class="sr-only">Edit page markdown</label>
+                <textarea id="editor-textarea" rows="18"></textarea>
+                <div class="editor-actions">
+                  <button type="button" class="btn btn-primary" id="btn-save-edit">Save Changes</button>
+                  <button type="button" class="btn btn-secondary" id="btn-cancel-edit">Cancel</button>
+                </div>
+              </div>
+            </article>
+
+            <aside class="reader-meta-panel" aria-label="Page Connections & Similarity">
+              <div class="meta-card">
+                <h3>Similar Existing Pages</h3>
+                <p class="meta-hint">Similarity-first candidates you can merge with this page.</p>
+                <div id="reader-similar-list" class="link-list"></div>
+              </div>
+              <div class="meta-card">
+                <h3>Inbound Backlinks</h3>
+                <div id="reader-backlinks-list" class="link-list"></div>
+              </div>
+              <div class="meta-card">
+                <h3>Outbound [[Wikilinks]]</h3>
+                <div id="reader-outbound-list" class="link-list"></div>
+              </div>
+              <div class="meta-card">
+                <h3>Recent Evolution</h3>
+                <div id="reader-history-list" class="history-mini-list"></div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- View 3: Ingest & Similarity-First Update Studio -->
+        <section id="view-ingest" class="stage-view" aria-labelledby="ingest-heading">
+          <div class="stage-toolbar">
+            <h2 id="ingest-heading">Ingest &amp; Similarity-First Update Studio</h2>
+            <span class="meta-hint">Always searches existing pages first to update &amp; enrich instead of creating duplicates.</span>
+          </div>
+
+          <div class="ingest-container">
+            <form id="ingest-form" class="ingest-form">
+              <div class="form-row-2">
+                <div class="field">
+                  <label for="ingest-title">Source / Note Title</label>
+                  <input type="text" id="ingest-title" required placeholder="e.g., Persistent Memory Patterns for Karpathy LLM Wikis">
+                </div>
+                <div class="field">
+                  <label for="ingest-threshold">Similarity Merge Threshold (<span id="threshold-display">0.35</span>)</label>
+                  <input type="range" id="ingest-threshold" min="0.15" max="0.85" step="0.05" value="0.35">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="ingest-content">Raw Source Content (Markdown or Plain Text)</label>
+                <textarea id="ingest-content" rows="9" required placeholder="Paste an article, paper excerpt, research note, or meeting transcript…"></textarea>
+              </div>
+
+              <div class="ingest-actions">
+                <button type="button" class="btn btn-secondary" id="btn-preview-ingest">1. Search Similar &amp; Preview Plan</button>
+                <button type="submit" class="btn btn-primary" id="btn-execute-ingest">2. Execute Ingest &amp; Update Wiki</button>
+                <button type="button" class="btn btn-ghost" id="btn-load-sample-ingest">Load Sample Update</button>
+              </div>
+            </form>
+
+            <div id="ingest-preview-panel" class="ingest-results-box hidden" aria-live="polite"></div>
+            <div id="ingest-result-panel" class="ingest-results-box hidden" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- View 4: Self-Maintenance & Health Center -->
+        <section id="view-lint" class="stage-view" aria-labelledby="lint-heading">
+          <div class="stage-toolbar">
+            <h2 id="lint-heading">Self-Maintenance &amp; Health Center</h2>
+            <div class="toolbar-controls">
+              <button type="button" class="btn btn-secondary" id="btn-run-audit">Run Audit</button>
+              <button type="button" class="btn btn-primary" id="btn-auto-heal">Auto-Heal Wiki Now</button>
+            </div>
+          </div>
+
+          <div class="lint-container" id="lint-container">
+            <p class="muted">Loading vault health audit…</p>
+          </div>
+        </section>
+
+        <!-- View 5: Raw Sources, SCHEMA.md, index.md & log.md -->
+        <section id="view-vault" class="stage-view" aria-labelledby="vault-heading">
+          <div class="stage-toolbar">
+            <h2 id="vault-heading">Vault Layers: SCHEMA.md, index.md, log.md &amp; raw/</h2>
+            <div class="toolbar-controls">
+              <button type="button" class="btn btn-sm vault-subtab active" data-subtab="index">index.md</button>
+              <button type="button" class="btn btn-sm vault-subtab" data-subtab="log">log.md</button>
+              <button type="button" class="btn btn-sm vault-subtab" data-subtab="schema">SCHEMA.md</button>
+              <button type="button" class="btn btn-sm vault-subtab" data-subtab="raw">raw/ Sources</button>
+              <button type="button" class="btn btn-sm vault-subtab" data-subtab="telemetry">Telemetry &amp; Cost</button>
+            </div>
+          </div>
+          <div id="vault-layer-content" class="vault-layer-content"></div>
+        </section>
+      </main>
+
+      <!-- Right Dock: Grounded Wiki Chat & File-to-Wiki -->
+      <aside class="sidebar-right" aria-label="Wiki Chat and Synthesis Assistant">
+        <div class="chat-header">
+          <h2>Wiki Chat</h2>
+          <button type="button" class="btn btn-sm btn-ghost" id="btn-clear-chat">Clear</button>
+        </div>
+
+        <div id="chat-messages" class="chat-messages" aria-live="polite">
+          <div class="chat-msg assistant">
+            <div class="chat-bubble">
+              <p>Ask anything across your compiled wiki. I consult <code>index.md</code> and run hybrid similarity search, cite pages with <code>[[wikilinks]]</code>, and let you <strong>File to Wiki</strong> so insights compound.</p>
+            </div>
+            <div class="chat-suggestions">
+              <button type="button" class="chip-btn" data-prompt="Compare stateless RAG vs the compiled LLM Wiki pattern.">Compare RAG vs LLM Wiki</button>
+              <button type="button" class="chip-btn" data-prompt="How does similarity-first entity deduplication keep the knowledge base self-maintaining?">How does deduplication work?</button>
+              <button type="button" class="chip-btn" data-prompt="How does Vannevar Bush's Memex relate to modern Obsidian + LLM workflows?">Memex &amp; LLM connection</button>
+            </div>
+          </div>
+        </div>
+
+        <form id="chat-form" class="chat-input-bar">
+          <label for="chat-input" class="sr-only">Ask the wiki</label>
+          <textarea id="chat-input" rows="2" placeholder="Ask a question across the wiki… (Enter to send)"></textarea>
+          <button type="submit" class="btn btn-primary">Ask</button>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Settings Modal Dialog -->
+  <dialog id="settings-dialog" closedby="any" aria-labelledby="settings-dialog-title">
+    <div class="dialog-header">
+      <h2 id="settings-dialog-title">Wiki &amp; LLM Provider Settings</h2>
+      <form method="dialog">
+        <button type="submit" class="btn btn-sm btn-ghost" aria-label="Close settings">✕</button>
+      </form>
+    </div>
+    <form id="settings-form" class="dialog-body">
+      <div class="field">
+        <label for="setting-theme">Appearance Theme</label>
+        <select id="setting-theme">
+          <option value="light dark">System Default</option>
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="setting-provider">LLM Synthesis Provider</label>
+        <select id="setting-provider">
+          <option value="local_smart">Smart Offline Synthesis (No API Key Required)</option>
+          <option value="gemini">Google Gemini (Interactions API — gemini-4-hydrogen)</option>
+          <option value="openai">OpenAI / Compatible Endpoint</option>
+          <option value="ollama">Ollama Local LLM</option>
+        </select>
+      </div>
+
+      <div class="field provider-field" data-provider="gemini">
+        <label for="setting-gemini-key">Gemini API Key</label>
+        <input type="password" id="setting-gemini-key" placeholder="AIza...">
+      </div>
+      <div class="field provider-field" data-provider="gemini">
+        <label for="setting-gemini-model">Gemini Model</label>
+        <input type="text" id="setting-gemini-model" value="gemini-4-hydrogen">
+      </div>
+
+      <div class="field provider-field" data-provider="openai">
+        <label for="setting-openai-key">OpenAI API Key</label>
+        <input type="password" id="setting-openai-key" placeholder="sk-...">
+      </div>
+      <div class="field provider-field" data-provider="openai">
+        <label for="setting-openai-url">OpenAI Base URL</label>
+        <input type="url" id="setting-openai-url" value="https://api.openai.com/v1">
+      </div>
+      <div class="field provider-field" data-provider="openai">
+        <label for="setting-openai-model">OpenAI Model</label>
+        <input type="text" id="setting-openai-model" value="gpt-4o-mini">
+      </div>
+
+      <div class="field provider-field" data-provider="ollama">
+        <label for="setting-ollama-url">Ollama Base URL</label>
+        <input type="url" id="setting-ollama-url" value="http://127.0.0.1:11434">
+      </div>
+      <div class="field provider-field" data-provider="ollama">
+        <label for="setting-ollama-model">Ollama Model</label>
+        <input type="text" id="setting-ollama-model" value="llama3.2">
+      </div>
+
+      <div class="field">
+        <label for="setting-sim-threshold">Similarity Merge Threshold (<span id="setting-sim-val">0.35</span>)</label>
+        <input type="range" id="setting-sim-threshold" min="0.15" max="0.85" step="0.05" value="0.35">
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="setting-auto-maintain" checked>
+        <span>Automatically run Self-Maintenance Linter after every ingest</span>
+      </label>
+
+      <div class="dialog-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-settings">Cancel</button>
+        <button type="submit" class="btn btn-primary" autofocus>Save Settings</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Revision History & Diff Inspector Dialog -->
+  <dialog id="diff-dialog" closedby="any" aria-labelledby="diff-dialog-title">
+    <div class="dialog-header">
+      <h2 id="diff-dialog-title">Page Revision History &amp; Diffs</h2>
+      <form method="dialog">
+        <button type="submit" class="btn btn-sm btn-ghost" aria-label="Close diff inspector">✕</button>
+      </form>
+    </div>
+    <div id="diff-dialog-body" class="dialog-body diff-dialog-body"></div>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:06Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-04.md",
+    "diff": "+ ---\n+ title: Uniform Resource Identifier (URI) list\n+ slug: uniform-resource-identifier-uri-list\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - service\n+ - level\n+ - data\n+ - critical\n+ - device\n+ sources:\n+ - 2026-11-14-telequad-w01-04.md\n+ created_at: '2026-11-14T05:19:06Z'\n+ updated_at: '2026-11-14T05:19:06Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n+   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace\n+   Specific Str...'\n+ ---\n+ \n+ # Uniform Resource Identifier (URI) list\n+ \n+ The tables below list URIs registered by 3GPP. Applications for new entries must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace Specific Strings (NSS) for the Namespace Identifier (NID) equal to 3gpp as described in RFC 5279: These URNs are associated with the top level identifier \"3gpp-service\" of the Namespace Specific Strings (NSSs) as described in RFC 6050. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN indicates that the device has the capabilities to support the mission critical video (MCVideo) service. These URNs are associated with the top level identifier \"3gpp-application\" of the Namespace Specific Strings (NSSs) as described in RFC 6050."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:12Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: Uniform Resource Identifier (URI) list' (2026-11-14-telequad-w02-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 1)\n+++ b/uniform-resource-identifier-uri-list.md (rev 2)\n@@ -11,9 +11,10 @@\n - device\n sources:\n - 2026-11-14-telequad-w01-04.md\n+- 2026-11-14-telequad-w02-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:06Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:12Z'\n+revision_count: 2\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:19Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Uniform Resource Identifier (URI) list \u2014 Specification Digest' (2026-11-14-telequad-w03-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 2)\n+++ b/uniform-resource-identifier-uri-list.md (rev 3)\n@@ -12,9 +12,10 @@\n sources:\n - 2026-11-14-telequad-w01-04.md\n - 2026-11-14-telequad-w02-04.md\n+- 2026-11-14-telequad-w03-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:12Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:19Z'\n+revision_count: 3\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:26Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'Uniform Resource Identifier (URI) list: Extended Procedures & Parameters' (2026-11-14-telequad-w04-04.md) into existing page [[uniform-resource-identifier-uri-list]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 3)\n+++ b/uniform-resource-identifier-uri-list.md (rev 4)\n@@ -13,9 +13,10 @@\n - 2026-11-14-telequad-w01-04.md\n - 2026-11-14-telequad-w02-04.md\n - 2026-11-14-telequad-w03-04.md\n+- 2026-11-14-telequad-w04-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:19Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:26Z'\n+revision_count: 4\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace\n@@ -25,3 +26,7 @@\n # Uniform Resource Identifier (URI) list\n \n The tables below list URIs registered by 3GPP. Applications for new entries must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace Specific Strings (NSS) for the Namespace Identifier (NID) equal to 3gpp as described in RFC 5279: These URNs are associated with the top level identifier \"3gpp-service\" of the Namespace Specific Strings (NSSs) as described in RFC 6050. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN indicates that the device has the capabilities to support the mission critical video (MCVideo) service. These URNs are associated with the top level identifier \"3gpp-application\" of the Namespace Specific Strings (NSSs) as described in RFC 6050.\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-04.md]** (Uniform Resource Identifier (URI) list: Extended Procedures & Parameters): XML Namespace Registry for the Namespace Identifier (NID) equal to 3gpp as described in RFC 5279: The XML namespace has a NID set to 3gpp. It is recommended that domain segregation of the namespace can follow: the URNs identifying namespaces are in the class \"ns\". Subsequent tags can follow. The model follows the following grammar: XML URI Registry for URIs used in a 3GPP TS, identifying a resource, and having a Namespace Identifier (NID) not equal to 3gpp (see RFC 5279). This registry does not register URIs used in 3GPP protocol specifications that have been assigned by other authorities, e.g. URIs already used in ETSI publications relating to core functions of the IP Multimedia Subsystem (IMS) used by the Next Generation Network standardized within ETSI Technical Committee Telecommunications and Internet converged Services and Protocols for Advanced Networking (TISPAN) (see ETSI TR 183 050 for a registry of assigned protocol numbers and names used in TISPAN protocol specifications). NOTE 1: A combination of lower and upper case letters can appear in the URN. This may be useful for reading by humans, but note that parsers do not distinguish between upper and lower case letters within URNs. (Background information for the decision to create and maintain this page can be found in C1-071726, C1-082533, C1-092017, C1-092976, C1-124619 and C1-130795.)"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:35Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on Uniform Resource Identifier (URI) list' (2026-11-14-telequad-w05-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 4)\n+++ b/uniform-resource-identifier-uri-list.md (rev 5)\n@@ -9,14 +9,21 @@\n - data\n - critical\n - device\n+- 3gpp\n+- protocol\n+- case\n+- domain\n+- namespace\n+- registry\n sources:\n - 2026-11-14-telequad-w01-04.md\n - 2026-11-14-telequad-w02-04.md\n - 2026-11-14-telequad-w03-04.md\n - 2026-11-14-telequad-w04-04.md\n+- 2026-11-14-telequad-w05-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:26Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:35Z'\n+revision_count: 5\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:42Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Uniform Resource Identifier (URI) list (Protocol Summary #6)' (2026-11-14-telequad-w06-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 5)\n+++ b/uniform-resource-identifier-uri-list.md (rev 6)\n@@ -21,9 +21,10 @@\n - 2026-11-14-telequad-w03-04.md\n - 2026-11-14-telequad-w04-04.md\n - 2026-11-14-telequad-w05-04.md\n+- 2026-11-14-telequad-w06-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:35Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:42Z'\n+revision_count: 6\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:50Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 Uniform Resource Identifier (URI) list' (2026-11-14-telequad-w07-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 6)\n+++ b/uniform-resource-identifier-uri-list.md (rev 7)\n@@ -15,6 +15,9 @@\n - domain\n - namespace\n - registry\n+- below\n+- identifier\n+- list\n sources:\n - 2026-11-14-telequad-w01-04.md\n - 2026-11-14-telequad-w02-04.md\n@@ -22,9 +25,10 @@\n - 2026-11-14-telequad-w04-04.md\n - 2026-11-14-telequad-w05-04.md\n - 2026-11-14-telequad-w06-04.md\n+- 2026-11-14-telequad-w07-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:42Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:50Z'\n+revision_count: 7\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:19:58Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-05' (2026-11-14-telequad-w08-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 7)\n+++ b/uniform-resource-identifier-uri-list.md (rev 8)\n@@ -26,9 +26,10 @@\n - 2026-11-14-telequad-w05-04.md\n - 2026-11-14-telequad-w06-04.md\n - 2026-11-14-telequad-w07-04.md\n+- 2026-11-14-telequad-w08-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:50Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:19:58Z'\n+revision_count: 8\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:06Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-05' (2026-11-14-telequad-w09-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 8)\n+++ b/uniform-resource-identifier-uri-list.md (rev 9)\n@@ -18,6 +18,7 @@\n - below\n - identifier\n - list\n+- etsi\n sources:\n - 2026-11-14-telequad-w01-04.md\n - 2026-11-14-telequad-w02-04.md\n@@ -27,9 +28,10 @@\n - 2026-11-14-telequad-w06-04.md\n - 2026-11-14-telequad-w07-04.md\n - 2026-11-14-telequad-w08-04.md\n+- 2026-11-14-telequad-w09-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:58Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:06Z'\n+revision_count: 9\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:15Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: Uniform Resource Identifier (URI) list' (2026-11-14-telequad-w10-04.md); existing synthesis in [[uniform-resource-identifier-uri-list]] already covers it.",
+    "diff": "--- a/uniform-resource-identifier-uri-list.md (rev 9)\n+++ b/uniform-resource-identifier-uri-list.md (rev 10)\n@@ -29,9 +29,10 @@\n - 2026-11-14-telequad-w07-04.md\n - 2026-11-14-telequad-w08-04.md\n - 2026-11-14-telequad-w09-04.md\n+- 2026-11-14-telequad-w10-04.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:20:06Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:15Z'\n+revision_count: 10\n confidence: high\n summary: 'The tables below list URIs registered by 3GPP. Applications for new entries\n   must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace"
+  }
+]

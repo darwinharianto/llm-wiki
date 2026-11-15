@@ -1,0 +1,397 @@
+{
+  "dataset": "SQuAD v1.1 dev",
+  "articles": [
+    {
+      "raw_title": "Nikola_Tesla",
+      "title": "Nikola Tesla",
+      "paragraphs": [
+        {
+          "context": "Nikola Tesla (Serbian Cyrillic: \u041d\u0438\u043a\u043e\u043b\u0430 \u0422\u0435\u0441\u043b\u0430; 10 July 1856 \u2013 7 January 1943) was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system.",
+          "qas": [
+            {
+              "id": "56df9e2838dc4217001520f6",
+              "question": "In what year was Nikola Tesla born? ",
+              "answers": [
+                "1856"
+              ]
+            },
+            {
+              "id": "56df9e2838dc4217001520f8",
+              "question": "What was Nikola Tesla's ethnicity?",
+              "answers": [
+                "Serbian"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current/direct current \"War of Currents\" as well as various patent battles.",
+          "qas": [
+            {
+              "id": "56df9ee138dc421700152108",
+              "question": "In what year did Nikola Tesla emigrate to the United States?",
+              "answers": [
+                "1884"
+              ]
+            },
+            {
+              "id": "56df9ee138dc421700152109",
+              "question": "Who did Tesla work for in the 1880s?",
+              "answers": [
+                "Thomas Edison"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "Tesla went on to pursue his ideas of wireless lighting and electricity distribution in his high-voltage, high-frequency power experiments in New York and Colorado Springs, and made early (1893) pronouncements on the possibility of wireless communication with his devices. He tried to put these ideas to practical use in an ill-fated attempt at intercontinental wireless transmission, his unfinished Wardenclyffe Tower project. In his lab he also conducted a range of experiments with mechanical oscillators/generators, electrical discharge tubes, and early X-ray imaging. He also built a wireless controlled boat, one of the first ever exhibited.",
+          "qas": [
+            {
+              "id": "56dfa01738dc42170015211d",
+              "question": "When did Tesla discover the possibility of wireless connectivity?",
+              "answers": [
+                "1893"
+              ]
+            },
+            {
+              "id": "56dfa01738dc42170015211e",
+              "question": "Were Tesla's experiments high-voltage or low-voltage?",
+              "answers": [
+                "high-voltage"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_title": "Computational_complexity_theory",
+      "title": "Computational complexity theory",
+      "paragraphs": [
+        {
+          "context": "Computational complexity theory is a branch of the theory of computation in theoretical computer science that focuses on classifying computational problems according to their inherent difficulty, and relating those classes to each other. A computational problem is understood to be a task that is in principle amenable to being solved by a computer, which is equivalent to stating that the problem may be solved by mechanical application of mathematical steps, such as an algorithm.",
+          "qas": [
+            {
+              "id": "56e16182e3433e1400422e28",
+              "question": "What branch of theoretical computer science deals with broadly classifying computational problems by difficulty and class of relationship?",
+              "answers": [
+                "Computational complexity theory"
+              ]
+            },
+            {
+              "id": "56e16182e3433e1400422e29",
+              "question": "By what main attribute are computational problems classified utilizing computational complexity theory? ",
+              "answers": [
+                "inherent difficulty",
+                "their inherent difficulty"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "A problem is regarded as inherently difficult if its solution requires significant resources, whatever the algorithm used. The theory formalizes this intuition, by introducing mathematical models of computation to study these problems and quantifying the amount of resources needed to solve them, such as time and storage. Other complexity measures are also used, such as the amount of communication (used in communication complexity), the number of gates in a circuit (used in circuit complexity) and the number of processors (used in parallel computing). One of the roles of computational complexity theory is to determine the practical limits on what computers can and cannot do.",
+          "qas": [
+            {
+              "id": "56e16839cd28a01900c67887",
+              "question": "What measure of a computational problem broadly defines the inherent difficulty of the solution?",
+              "answers": [
+                "if its solution requires significant resources",
+                "its solution requires significant resources"
+              ]
+            },
+            {
+              "id": "56e16839cd28a01900c67888",
+              "question": "What method is used to intuitively assess or quantify the amount of resources required to solve a computational problem?",
+              "answers": [
+                "mathematical models of computation"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "Closely related fields in theoretical computer science are analysis of algorithms and computability theory. A key distinction between analysis of algorithms and computational complexity theory is that the former is devoted to analyzing the amount of resources needed by a particular algorithm to solve a problem, whereas the latter asks a more general question about all possible algorithms that could be used to solve the same problem. More precisely, it tries to classify problems that can or cannot be solved with appropriately restricted resources. In turn, imposing restrictions on the available resources is what distinguishes computational complexity from computability theory: the latter theory asks what kind of problems can, in principle, be solved algorithmically.",
+          "qas": [
+            {
+              "id": "56e17644e3433e1400422f40",
+              "question": "What two fields of theoretical computer science closely mirror computational complexity theory?",
+              "answers": [
+                "analysis of algorithms and computability theory"
+              ]
+            },
+            {
+              "id": "56e17644e3433e1400422f41",
+              "question": "What field of computer science analyzes the resource requirements of a specific algorithm isolated unto itself within a given problem?",
+              "answers": [
+                "analysis of algorithms"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_title": "Super_Bowl_50",
+      "title": "Super Bowl 50",
+      "paragraphs": [
+        {
+          "context": "Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.",
+          "qas": [
+            {
+              "id": "56be4db0acb8001400a502ec",
+              "question": "Which NFL team represented the AFC at Super Bowl 50?",
+              "answers": [
+                "Denver Broncos"
+              ]
+            },
+            {
+              "id": "56be4db0acb8001400a502ed",
+              "question": "Which NFL team represented the NFC at Super Bowl 50?",
+              "answers": [
+                "Carolina Panthers"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The Panthers finished the regular season with a 15\u20131 record, and quarterback Cam Newton was named the NFL Most Valuable Player (MVP). They defeated the Arizona Cardinals 49\u201315 in the NFC Championship Game and advanced to their second Super Bowl appearance since the franchise was founded in 1995. The Broncos finished the regular season with a 12\u20134 record, and denied the New England Patriots a chance to defend their title from Super Bowl XLIX by defeating them 20\u201318 in the AFC Championship Game. They joined the Patriots, Dallas Cowboys, and Pittsburgh Steelers as one of four teams that have made eight appearances in the Super Bowl.",
+          "qas": [
+            {
+              "id": "56be4e1facb8001400a502f6",
+              "question": "Which Carolina Panthers player was named Most Valuable Player?",
+              "answers": [
+                "Cam Newton"
+              ]
+            },
+            {
+              "id": "56be4e1facb8001400a502f9",
+              "question": "How many appearances have the Denver Broncos made in the Super Bowl?",
+              "answers": [
+                "8",
+                "eight"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The Broncos took an early lead in Super Bowl 50 and never trailed. Newton was limited by Denver's defense, which sacked him seven times and forced him into three turnovers, including a fumble which they recovered for a touchdown. Denver linebacker Von Miller was named Super Bowl MVP, recording five solo tackles, 2\u00bd sacks, and two forced fumbles.",
+          "qas": [
+            {
+              "id": "56be4eafacb8001400a50302",
+              "question": "Who was the Super Bowl 50 MVP?",
+              "answers": [
+                "Von Miller",
+                "Miller"
+              ]
+            },
+            {
+              "id": "56be4eafacb8001400a50303",
+              "question": "How many fumbles did Von Miller force in Super Bowl 50?",
+              "answers": [
+                "2",
+                "two"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_title": "Warsaw",
+      "title": "Warsaw",
+      "paragraphs": [
+        {
+          "context": "One of the most famous people born in Warsaw was Maria Sk\u0142odowska-Curie, who achieved international recognition for her research on radioactivity and was the first female recipient of the Nobel Prize. Famous musicians include W\u0142adys\u0142aw Szpilman and Fr\u00e9d\u00e9ric Chopin. Though Chopin was born in the village of \u017belazowa Wola, about 60 km (37 mi) from Warsaw, he moved to the city with his family when he was seven months old. Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745.",
+          "qas": [
+            {
+              "id": "5733a5f54776f41900660f45",
+              "question": "What was Maria Curie the first female recipient of?",
+              "answers": [
+                "Nobel Prize"
+              ]
+            },
+            {
+              "id": "5733a5f54776f41900660f48",
+              "question": "What year was Casimir Pulaski born in Warsaw?",
+              "answers": [
+                "1745"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The Saxon Garden, covering the area of 15.5 ha, was formally a royal garden. There are over 100 different species of trees and the avenues are a place to sit and relax. At the east end of the park, the Tomb of the Unknown Soldier is situated. In the 19th century the Krasi\u0144ski Palace Garden was remodelled by Franciszek Szanior. Within the central area of the park one can still find old trees dating from that period: maidenhair tree, black walnut, Turkish hazel and Caucasian wingnut trees. With its benches, flower carpets, a pond with ducks on and a playground for kids, the Krasi\u0144ski Palace Garden is a popular strolling destination for the Varsovians. The Monument of the Warsaw Ghetto Uprising is also situated here. The \u0141azienki Park covers the area of 76 ha. The unique character and history of the park is reflected in its landscape architecture (pavilions, sculptures, bridges, cascades, ponds) and vegetation (domestic and foreign species of trees and bushes). What makes this park different from other green spaces in Warsaw is the presence of peacocks and pheasants, which can be seen here walking around freely, and royal carps in the pond. The Wilan\u00f3w Palace Park, dates back to the second half of the 17th century. It covers the area of 43 ha. Its central French-styled area corresponds to the ancient, baroque forms of the palace. The eastern section of the park, closest to the Palace, is the two-level garden with a terrace facing the pond. The park around the Kr\u00f3likarnia Palace is situated on the old escarpment of the Vistula. The park has lanes running on a few levels deep into the ravines on both sides of the palace.",
+          "qas": [
+            {
+              "id": "57336755d058e614000b5a3d",
+              "question": "Over how many species of trees can be found in the Saxon Garden?",
+              "answers": [
+                "100",
+                "over 100"
+              ]
+            },
+            {
+              "id": "57336755d058e614000b5a3f",
+              "question": "What is a popular strolling destination for the Varsovians?",
+              "answers": [
+                "Krasi\u0144ski Palace Garden"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "There are 13 natural reserves in Warsaw \u2013 among others, Bielany Forest, Kabaty Woods, Czerniak\u00f3w Lake. About 15 kilometres (9 miles) from Warsaw, the Vistula river's environment changes strikingly and features a perfectly preserved ecosystem, with a habitat of animals that includes the otter, beaver and hundreds of bird species. There are also several lakes in Warsaw \u2013 mainly the oxbow lakes, like Czerniak\u00f3w Lake, the lakes in the \u0141azienki or Wilan\u00f3w Parks, Kamionek Lake. There are lot of small lakes in the parks, but only a few are permanent \u2013 the majority are emptied before winter to clean them of plants and sediments.",
+          "qas": [
+            {
+              "id": "57337ddc4776f41900660bbb",
+              "question": "How far from Warsaw does the Vistula river's environment change noticeably? ",
+              "answers": [
+                "15 kilometres",
+                "About 15 kilometres"
+              ]
+            },
+            {
+              "id": "57337ddc4776f41900660bbc",
+              "question": "What animals does the Vistula river's ecosystem include?",
+              "answers": [
+                "otter, beaver and hundreds of bird species",
+                "otter, beaver and hundreds of bird species."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_title": "Normans",
+      "title": "Normans",
+      "paragraphs": [
+        {
+          "context": "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in the 10th and 11th centuries gave their name to Normandy, a region in France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West Francia. Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.",
+          "qas": [
+            {
+              "id": "56ddde6b9a695914005b9628",
+              "question": "In what country is Normandy located?",
+              "answers": [
+                "France"
+              ]
+            },
+            {
+              "id": "56ddde6b9a695914005b9629",
+              "question": "When were the Normans in Normandy?",
+              "answers": [
+                "10th and 11th centuries",
+                "in the 10th and 11th centuries"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The Norman dynasty had a major political, cultural and military impact on medieval Europe and even the Near East. The Normans were famed for their martial spirit and eventually for their Christian piety, becoming exponents of the Catholic orthodoxy into which they assimilated. They adopted the Gallo-Romance language of the Frankish land they settled, their dialect becoming known as Norman, Normaund or Norman French, an important literary language. The Duchy of Normandy, which they formed by treaty with the French crown, was a great fief of medieval France, and under Richard I of Normandy was forged into a cohesive and formidable principality in feudal tenure. The Normans are noted both for their culture, such as their unique Romanesque architecture and musical traditions, and for their significant military accomplishments and innovations. Norman adventurers founded the Kingdom of Sicily under Roger II after conquering southern Italy on the Saracens and Byzantines, and an expedition on behalf of their duke, William the Conqueror, led to the Norman conquest of England at the Battle of Hastings in 1066. Norman cultural and military influence spread from these new European centres to the Crusader states of the Near East, where their prince Bohemond I founded the Principality of Antioch in the Levant, to Scotland and Wales in Great Britain, to Ireland, and to the coasts of north Africa and the Canary Islands.",
+          "qas": [
+            {
+              "id": "56dddf4066d3e219004dad5f",
+              "question": "Who was the duke in the battle of Hastings?",
+              "answers": [
+                "William the Conqueror"
+              ]
+            },
+            {
+              "id": "56dddf4066d3e219004dad60",
+              "question": "Who ruled the duchy of Normandy",
+              "answers": [
+                "Richard I"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The English name \"Normans\" comes from the French words Normans/Normanz, plural of Normant, modern French normand, which is itself borrowed from Old Low Franconian Nortmann \"Northman\" or directly from Old Norse Nor\u00f0ma\u00f0r, Latinized variously as Nortmannus, Normannus, or Nordmannus (recorded in Medieval Latin, 9th century) to mean \"Norseman, Viking\".",
+          "qas": [
+            {
+              "id": "56dde0379a695914005b9636",
+              "question": "What is the original meaning of the word Norman?",
+              "answers": [
+                "Viking",
+                "Norseman, Viking"
+              ]
+            },
+            {
+              "id": "56dde0379a695914005b9637",
+              "question": "When was the Latin version of the word Norman first recorded?",
+              "answers": [
+                "9th century"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_title": "Steam_engine",
+      "title": "Steam engine",
+      "paragraphs": [
+        {
+          "context": "Steam engines are external combustion engines, where the working fluid is separate from the combustion products. Non-combustion heat sources such as solar power, nuclear power or geothermal energy may be used. The ideal thermodynamic cycle used to analyze this process is called the Rankine cycle. In the cycle, water is heated and transforms into steam within a boiler operating at a high pressure. When expanded through pistons or turbines, mechanical work is done. The reduced-pressure steam is then condensed and pumped back into the boiler.",
+          "qas": [
+            {
+              "id": "57112686b654c5140001fbd3",
+              "question": "Along with geothermal and nuclear, what is a notable non-combustion heat source?",
+              "answers": [
+                "solar",
+                "solar power",
+                "solar power, nuclear power or geothermal energy"
+              ]
+            },
+            {
+              "id": "57112686b654c5140001fbd4",
+              "question": "What ideal thermodynamic cycle analyzes the process by which steam engines work?",
+              "answers": [
+                "Rankine",
+                "Rankine cycle"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The first commercially successful true engine, in that it could generate power and transmit it to a machine, was the atmospheric engine, invented by Thomas Newcomen around 1712. It was an improvement over Savery's steam pump, using a piston as proposed by Papin. Newcomen's engine was relatively inefficient, and in most cases was used for pumping water. It worked by creating a partial vacuum by condensing steam under a piston within a cylinder. It was employed for draining mine workings at depths hitherto impossible, and also for providing a reusable water supply for driving waterwheels at factories sited away from a suitable \"head\". Water that had passed over the wheel was pumped back up into a storage reservoir above the wheel.",
+          "qas": [
+            {
+              "id": "571126dfa58dae1900cd6cb2",
+              "question": "What was the first true engine that was commercially successful?",
+              "answers": [
+                "atmospheric engine",
+                "the atmospheric engine"
+              ]
+            },
+            {
+              "id": "571126dfa58dae1900cd6cb3",
+              "question": "Who was the inventor of the atmospheric engine?",
+              "answers": [
+                "Thomas Newcomen"
+              ]
+            }
+          ]
+        },
+        {
+          "context": "The first full-scale working railway steam locomotive was built by Richard Trevithick in the United Kingdom and, on 21 February 1804, the world's first railway journey took place as Trevithick's unnamed steam locomotive hauled a train along the tramway from the Pen-y-darren ironworks, near Merthyr Tydfil to Abercynon in south Wales. The design incorporated a number of important innovations that included using high-pressure steam which reduced the weight of the engine and increased its efficiency. Trevithick visited the Newcastle area later in 1804 and the colliery railways in north-east England became the leading centre for experimentation and development of steam locomotives.",
+          "qas": [
+            {
+              "id": "571127a5a58dae1900cd6cc4",
+              "question": "In what country was a full-scale working railway steam locomotive first invented?",
+              "answers": [
+                "United Kingdom"
+              ]
+            },
+            {
+              "id": "571127a5a58dae1900cd6cc5",
+              "question": "On what date did the first railway trip in the world occur?",
+              "answers": [
+                "21 February 1804"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

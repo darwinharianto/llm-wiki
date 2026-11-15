@@ -1,0 +1,129 @@
+{
+  "experiment": "50 TeleQuAD Questions x 4x LLM-Rephrased Redundancy (200 Docs)",
+  "rephrase_model": "gemini-3.5-flash-lite",
+  "embedding_model": "intfloat/multilingual-e5-large",
+  "consolidation": {
+    "lexical_only": {
+      "label": "LLM Wiki (Lexical Only)",
+      "total_docs": 200,
+      "final_pages": 199,
+      "created": 199,
+      "updated": 1,
+      "dedup_rate_waves_2_to_4_pct": 0.67,
+      "wave_stats": {
+        "1": {
+          "created": 50,
+          "updated": 0
+        },
+        "2": {
+          "created": 50,
+          "updated": 0
+        },
+        "3": {
+          "created": 50,
+          "updated": 0
+        },
+        "4": {
+          "created": 49,
+          "updated": 1
+        }
+      },
+      "elapsed_s": 0.42
+    },
+    "wiki_plus_e5": {
+      "label": "LLM Wiki + E5 Dense",
+      "total_docs": 200,
+      "final_pages": 60,
+      "created": 60,
+      "updated": 140,
+      "dedup_rate_waves_2_to_4_pct": 90.67,
+      "wave_stats": {
+        "1": {
+          "created": 46,
+          "updated": 4
+        },
+        "2": {
+          "created": 4,
+          "updated": 46
+        },
+        "3": {
+          "created": 6,
+          "updated": 44
+        },
+        "4": {
+          "created": 4,
+          "updated": 46
+        }
+      },
+      "elapsed_s": 8.24
+    }
+  },
+  "retrieval": {
+    "pure_e5_4x_raw": {
+      "R@1": 90.0,
+      "R@3": 94.0,
+      "R@5": 94.0,
+      "R@10": 98.0,
+      "MRR@10": 92.14,
+      "avg_unique_topics_top10": 4.78,
+      "wasted_duplicate_slots_pct": 52.2,
+      "index_s": 11.52,
+      "active_docs": 200
+    },
+    "llm_wiki_lexical_only": {
+      "R@1": 96.0,
+      "R@3": 98.0,
+      "R@5": 98.0,
+      "R@10": 100.0,
+      "MRR@10": 97.29,
+      "avg_unique_topics_top10": 4.54,
+      "wasted_duplicate_slots_pct": 54.6,
+      "active_docs": 199
+    },
+    "llm_wiki_plus_e5_dense": {
+      "R@1": 92.0,
+      "R@3": 100.0,
+      "R@5": 100.0,
+      "R@10": 100.0,
+      "MRR@10": 96.0,
+      "avg_unique_topics_top10": 9.24,
+      "wasted_duplicate_slots_pct": 7.6,
+      "active_docs": 60
+    }
+  },
+  "qa_end_to_end": {
+    "pure_e5_4x_raw": {
+      "system": "Pure E5-Large (Top-3 Raw Docs)",
+      "token_recall_pct": 78.87,
+      "token_f1_pct": 21.32,
+      "answer_contains_gold_pct": 50.0
+    },
+    "llm_wiki_plus_e5_dense": {
+      "system": "LLM Wiki + E5 Dense (Top-3 Consolidated Pages)",
+      "token_recall_pct": 91.77,
+      "token_f1_pct": 29.91,
+      "answer_contains_gold_pct": 72.0
+    }
+  },
+  "telemetry_summary": {
+    "total_events": 100,
+    "llm_calls_total": 100,
+    "llm_calls_succeeded": 100,
+    "llm_calls_failed": 0,
+    "local_smart_executions": 0,
+    "llm_calls_skipped_by_dedup": 0,
+    "llm_fallbacks_to_local": 0,
+    "input_tokens": 197458,
+    "output_tokens": 13048,
+    "thought_tokens": 0,
+    "cached_tokens": 0,
+    "total_tokens": 210506,
+    "estimated_tokens_saved": 0,
+    "total_cost_usd": 0.0187236,
+    "estimated_cost_saved_usd": 0.0,
+    "total_llm_latency_ms": 409902.6,
+    "avg_llm_latency_ms": 4099.03,
+    "total_local_latency_ms": 0,
+    "avg_local_latency_ms": 0.0
+  }
+}

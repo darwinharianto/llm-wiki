@@ -1,0 +1,79 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:06Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-05.md",
+    "diff": "+ ---\n+ title: '3GPP 25996-f00: Spatial parameters for the MS'\n+ slug: 3gpp-25996-f00-spatial-parameters-for-the-ms\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - each\n+ - path\n+ - power\n+ - angle\n+ - antenna\n+ sources:\n+ - 2026-11-14-telequad-w01-05.md\n+ created_at: '2026-11-14T05:19:06Z'\n+ updated_at: '2026-11-14T05:19:06Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n+   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\\n+   \\ with an antenna gai...\"\n+ ---\n+ \n+ # 3GPP 25996-f00: Spatial parameters for the MS\n+ \n+ 4.6\tSpatial parameters for the MS 4.6.1\tMS antenna pattern For each and every antenna element at the MS, the antenna pattern will be assumed omni directional with an antenna gain of -1 dBi. 4.6.2\tPer-path MS angle spread (AS) The MS per-path AS is defined as the root mean square (RMS) of angles of an incident path's power at the MS array. Two values of the path's angle spread are considered: 4.6.3\tPer-path MS angle of arrival The per-path Angle of Arrival (AoA) is defined as the mean of angles of an incident path's power at the UE/Mobile Station array with respect to the broadside as shown Figure 4.5. Three different per-path AoA values at the MS are suggested for the cases of a non-uniform PAS, see Table 4.1 for details: 4.6.4\tPer-path MS power azimuth spectrum The Laplacian distribution and the Uniform distribution are used to model the per-path Power Azimuth Spectrum (PAS) at the MS. The Power Azimuth Spectrum (PAS) of a path arriving at the MS is modeled as either a Laplacian distribution or a uniform over 360 degree distribution."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:07Z",
+    "operation": "lint-orphan",
+    "note": "Connected orphan page [[3gpp-25211-f00-dedicated-downlink-physical-channels]] into hub [[3gpp-25996-f00-spatial-parameters-for-the-ms]]",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 1)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 2)\n@@ -12,8 +12,8 @@\n sources:\n - 2026-11-14-telequad-w01-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:06Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:07Z'\n+revision_count: 2\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\\n@@ -23,3 +23,7 @@\n # 3GPP 25996-f00: Spatial parameters for the MS\n \n 4.6\tSpatial parameters for the MS 4.6.1\tMS antenna pattern For each and every antenna element at the MS, the antenna pattern will be assumed omni directional with an antenna gain of -1 dBi. 4.6.2\tPer-path MS angle spread (AS) The MS per-path AS is defined as the root mean square (RMS) of angles of an incident path's power at the MS array. Two values of the path's angle spread are considered: 4.6.3\tPer-path MS angle of arrival The per-path Angle of Arrival (AoA) is defined as the mean of angles of an incident path's power at the UE/Mobile Station array with respect to the broadside as shown Figure 4.5. Three different per-path AoA values at the MS are suggested for the cases of a non-uniform PAS, see Table 4.1 for details: 4.6.4\tPer-path MS power azimuth spectrum The Laplacian distribution and the Uniform distribution are used to model the per-path Power Azimuth Spectrum (PAS) at the MS. The Power Azimuth Spectrum (PAS) of a path arriving at the MS is modeled as either a Laplacian distribution or a uniform over 360 degree distribution.\n+\n+## Related Concepts\n+\n+- Related trail: [[3gpp-25211-f00-dedicated-downlink-physical-channels|3GPP 25211-f00: Dedicated downlink physical channels]] \u2014 5.3.2\tDedicated downlink physical channels There are five types of downlink dedicated physical channels, the Downlink Dedicated Physical Channel (downlink DPCH), the Fractional ..."
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:12Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: 3GPP 25996-f00: Spatial parameters for the MS' (2026-11-14-telequad-w02-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 2)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 3)\n@@ -11,9 +11,10 @@\n - antenna\n sources:\n - 2026-11-14-telequad-w01-05.md\n+- 2026-11-14-telequad-w02-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:07Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:12Z'\n+revision_count: 3\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:19Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 25996-f00: Spatial parameters for the MS \u2014 Specification Digest' (2026-11-14-telequad-w03-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 3)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 4)\n@@ -12,9 +12,10 @@\n sources:\n - 2026-11-14-telequad-w01-05.md\n - 2026-11-14-telequad-w02-05.md\n+- 2026-11-14-telequad-w03-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:12Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:19Z'\n+revision_count: 4\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:27Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from '3GPP 25996-f00: Spatial parameters for the MS: Extended Procedures & Parameters' (2026-11-14-telequad-w04-05.md) into existing page [[3gpp-25996-f00-spatial-parameters-for-the-ms]] (skipped 2 redundant block(s)).",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 4)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 5)\n@@ -13,9 +13,10 @@\n - 2026-11-14-telequad-w01-05.md\n - 2026-11-14-telequad-w02-05.md\n - 2026-11-14-telequad-w03-05.md\n+- 2026-11-14-telequad-w04-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:19Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:27Z'\n+revision_count: 5\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\\n@@ -29,3 +30,7 @@\n ## Related Concepts\n \n - Related trail: [[3gpp-25211-f00-dedicated-downlink-physical-channels|3GPP 25211-f00: Dedicated downlink physical channels]] \u2014 5.3.2\tDedicated downlink physical channels There are five types of downlink dedicated physical channels, the Downlink Dedicated Physical Channel (downlink DPCH), the Fractional ...\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-05.md]** (3GPP 25996-f00: Spatial parameters for the MS: Extended Procedures & Parameters): For an incoming AOA  and RMS angle-spread , the MS per-path Laplacian PAS value at an angle  is given by: where both angles and  are given with respect to the boresight of the antenna elements. It is assumed that all antenna elements' orientations are aligned. Also, P is the average received power and No is the normalization constant: In the above equation,  represents path components (sub-rays) of the path power arriving at an incoming AoA . The distribution of these path components is TBD. 4.6.5\tMS direction of travel The mobile station direction of travel is defined with respect to the broadside of the mobile antenna array as shown in Figure 4.6. 4.6.6\tPer-path Doppler spectrum The per-path Doppler spectrum is defined as a function of the direction of travel and the per-path PAS and AoA at the MS. This should correspond to the per-path fading behavior for either the correlation-based or ray-based method."
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:35Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on 3GPP 25996-f00: Spatial parameters for the MS' (2026-11-14-telequad-w05-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 5)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 6)\n@@ -9,14 +9,18 @@\n - power\n - angle\n - antenna\n+- mobile\n+- direction\n+- travel\n sources:\n - 2026-11-14-telequad-w01-05.md\n - 2026-11-14-telequad-w02-05.md\n - 2026-11-14-telequad-w03-05.md\n - 2026-11-14-telequad-w04-05.md\n+- 2026-11-14-telequad-w05-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:27Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:35Z'\n+revision_count: 6\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:43Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP 25996-f00: Spatial parameters for the MS (Protocol Summary #6)' (2026-11-14-telequad-w06-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 6)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 7)\n@@ -18,9 +18,10 @@\n - 2026-11-14-telequad-w03-05.md\n - 2026-11-14-telequad-w04-05.md\n - 2026-11-14-telequad-w05-05.md\n+- 2026-11-14-telequad-w06-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:35Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:43Z'\n+revision_count: 7\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:19:50Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 3GPP 25996-f00: Spatial parameters for the MS' (2026-11-14-telequad-w07-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 7)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 8)\n@@ -12,6 +12,9 @@\n - mobile\n - direction\n - travel\n+- 3gpp\n+- laplacian\n+- parameters\n sources:\n - 2026-11-14-telequad-w01-05.md\n - 2026-11-14-telequad-w02-05.md\n@@ -19,9 +22,10 @@\n - 2026-11-14-telequad-w04-05.md\n - 2026-11-14-telequad-w05-05.md\n - 2026-11-14-telequad-w06-05.md\n+- 2026-11-14-telequad-w07-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:43Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:19:50Z'\n+revision_count: 8\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:19:58Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-06' (2026-11-14-telequad-w08-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 8)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 9)\n@@ -23,9 +23,10 @@\n - 2026-11-14-telequad-w05-05.md\n - 2026-11-14-telequad-w06-05.md\n - 2026-11-14-telequad-w07-05.md\n+- 2026-11-14-telequad-w08-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:50Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:19:58Z'\n+revision_count: 9\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:06Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-06' (2026-11-14-telequad-w09-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 9)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 10)\n@@ -24,9 +24,10 @@\n - 2026-11-14-telequad-w06-05.md\n - 2026-11-14-telequad-w07-05.md\n - 2026-11-14-telequad-w08-05.md\n+- 2026-11-14-telequad-w09-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:58Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:06Z'\n+revision_count: 10\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  },
+  {
+    "revision": 11,
+    "timestamp": "2026-11-14T05:20:15Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: 3GPP 25996-f00: Spatial parameters for the MS' (2026-11-14-telequad-w10-05.md); existing synthesis in [[3gpp-25996-f00-spatial-parameters-for-the-ms]] already covers it.",
+    "diff": "--- a/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 10)\n+++ b/3gpp-25996-f00-spatial-parameters-for-the-ms.md (rev 11)\n@@ -15,6 +15,7 @@\n - 3gpp\n - laplacian\n - parameters\n+- distribution\n sources:\n - 2026-11-14-telequad-w01-05.md\n - 2026-11-14-telequad-w02-05.md\n@@ -25,9 +26,10 @@\n - 2026-11-14-telequad-w07-05.md\n - 2026-11-14-telequad-w08-05.md\n - 2026-11-14-telequad-w09-05.md\n+- 2026-11-14-telequad-w10-05.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:20:06Z'\n-revision_count: 10\n+updated_at: '2026-11-14T05:20:15Z'\n+revision_count: 11\n confidence: high\n summary: \"4.6\\tSpatial parameters for the MS 4.6.1\\tMS antenna pattern For each and\\\n   \\ every antenna element at the MS, the antenna pattern will be assumed omni directional\\"
+  }
+]

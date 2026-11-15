@@ -1,0 +1,72 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:06Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-08.md",
+    "diff": "+ ---\n+ title: 'WiFi: Overview'\n+ slug: wifi-overview\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - device\n+ - mobile\n+ - data\n+ - back\n+ - access\n+ - backbone\n+ sources:\n+ - 2026-11-14-telequad-w01-08.md\n+ created_at: '2026-11-14T05:19:06Z'\n+ updated_at: '2026-11-14T05:19:06Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: Most common way of using WLAN would be like as follows. In most case, the\n+   main communication line would be wired line and we connect AP(Access Point) to the\n+   wired backbone as sh...\n+ ---\n+ \n+ # WiFi: Overview\n+ \n+ Most common way of using WLAN would be like as follows. In most case, the main communication line would be wired line and we connect AP(Access Point) to the wired backbone as shown below. Access Point is a device that communicate with the client device (e.g, Laptop or Smart phone) and convey the data through the wireline backbone. Access point has two different interface with it, one for connecting to wired backbone using wireline protocol and the other one for communicating to various mobile device using a wireless protocol. When we say WLAN in terms of technology, it usually mean the technology being used to connect the mobile clients and Access Points in wireless communication method."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:13Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: WiFi: Overview' (2026-11-14-telequad-w02-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 1)\n+++ b/wifi-overview.md (rev 2)\n@@ -10,11 +10,13 @@\n - back\n - access\n - backbone\n+- point\n sources:\n - 2026-11-14-telequad-w01-08.md\n+- 2026-11-14-telequad-w02-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:06Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:13Z'\n+revision_count: 2\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:21Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'WiFi: Overview \u2014 Specification Digest' (2026-11-14-telequad-w03-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 2)\n+++ b/wifi-overview.md (rev 3)\n@@ -14,9 +14,10 @@\n sources:\n - 2026-11-14-telequad-w01-08.md\n - 2026-11-14-telequad-w02-08.md\n+- 2026-11-14-telequad-w03-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:13Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:21Z'\n+revision_count: 3\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:28Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'WiFi: Overview: Extended Procedures & Parameters' (2026-11-14-telequad-w04-08.md) into existing page [[wifi-overview]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/wifi-overview.md (rev 3)\n+++ b/wifi-overview.md (rev 4)\n@@ -11,13 +11,15 @@\n - access\n - backbone\n - point\n+- protocol\n sources:\n - 2026-11-14-telequad-w01-08.md\n - 2026-11-14-telequad-w02-08.md\n - 2026-11-14-telequad-w03-08.md\n+- 2026-11-14-telequad-w04-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:21Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:28Z'\n+revision_count: 4\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the\n@@ -27,3 +29,7 @@\n # WiFi: Overview\n \n Most common way of using WLAN would be like as follows. In most case, the main communication line would be wired line and we connect AP(Access Point) to the wired backbone as shown below. Access Point is a device that communicate with the client device (e.g, Laptop or Smart phone) and convey the data through the wireline backbone. Access point has two different interface with it, one for connecting to wired backbone using wireline protocol and the other one for communicating to various mobile device using a wireless protocol. When we say WLAN in terms of technology, it usually mean the technology being used to connect the mobile clients and Access Points in wireless communication method.\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-08.md]** (WiFi: Overview: Extended Procedures & Parameters): The pages I will post will also be about those wireless communication technology between the mobile clients and an access point. As the terminology implies, WLAN is also a kind of LAN (Local Area Network), so it use most part of the standard LAN protocol especially in higher layer. The only difference is very low layer parts (PHY and Low MAC). Most of the contents I will deal with will be about PHY/MAC part of the protocol stack."
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:36Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on WiFi: Overview' (2026-11-14-telequad-w05-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 4)\n+++ b/wifi-overview.md (rev 5)\n@@ -12,14 +12,18 @@\n - backbone\n - point\n - protocol\n+- network\n+- layer\n+- part\n sources:\n - 2026-11-14-telequad-w01-08.md\n - 2026-11-14-telequad-w02-08.md\n - 2026-11-14-telequad-w03-08.md\n - 2026-11-14-telequad-w04-08.md\n+- 2026-11-14-telequad-w05-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:28Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:36Z'\n+revision_count: 5\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:44Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'WiFi: Overview (Protocol Summary #6)' (2026-11-14-telequad-w06-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 5)\n+++ b/wifi-overview.md (rev 6)\n@@ -21,9 +21,10 @@\n - 2026-11-14-telequad-w03-08.md\n - 2026-11-14-telequad-w04-08.md\n - 2026-11-14-telequad-w05-08.md\n+- 2026-11-14-telequad-w06-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:36Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:44Z'\n+revision_count: 6\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:51Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 WiFi: Overview' (2026-11-14-telequad-w07-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 6)\n+++ b/wifi-overview.md (rev 7)\n@@ -15,6 +15,9 @@\n - network\n - layer\n - part\n+- below\n+- communication\n+- line\n sources:\n - 2026-11-14-telequad-w01-08.md\n - 2026-11-14-telequad-w02-08.md\n@@ -22,9 +25,10 @@\n - 2026-11-14-telequad-w04-08.md\n - 2026-11-14-telequad-w05-08.md\n - 2026-11-14-telequad-w06-08.md\n+- 2026-11-14-telequad-w07-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:44Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:51Z'\n+revision_count: 7\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:19:59Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-09' (2026-11-14-telequad-w08-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 7)\n+++ b/wifi-overview.md (rev 8)\n@@ -26,9 +26,10 @@\n - 2026-11-14-telequad-w05-08.md\n - 2026-11-14-telequad-w06-08.md\n - 2026-11-14-telequad-w07-08.md\n+- 2026-11-14-telequad-w08-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:51Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:19:59Z'\n+revision_count: 8\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:08Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-09' (2026-11-14-telequad-w09-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 8)\n+++ b/wifi-overview.md (rev 9)\n@@ -27,9 +27,10 @@\n - 2026-11-14-telequad-w06-08.md\n - 2026-11-14-telequad-w07-08.md\n - 2026-11-14-telequad-w08-08.md\n+- 2026-11-14-telequad-w09-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:19:59Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:08Z'\n+revision_count: 9\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:17Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: WiFi: Overview' (2026-11-14-telequad-w10-08.md); existing synthesis in [[wifi-overview]] already covers it.",
+    "diff": "--- a/wifi-overview.md (rev 9)\n+++ b/wifi-overview.md (rev 10)\n@@ -28,9 +28,10 @@\n - 2026-11-14-telequad-w07-08.md\n - 2026-11-14-telequad-w08-08.md\n - 2026-11-14-telequad-w09-08.md\n+- 2026-11-14-telequad-w10-08.md\n created_at: '2026-11-14T05:19:06Z'\n-updated_at: '2026-11-14T05:20:08Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:17Z'\n+revision_count: 10\n confidence: high\n summary: Most common way of using WLAN would be like as follows. In most case, the\n   main communication line would be wired line and we connect AP(Access Point) to the"
+  }
+]

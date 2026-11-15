@@ -1,0 +1,54 @@
+---
+title: End of an era as RAN6 closes
+slug: end-of-an-era-as-ran6-closes
+category: concepts
+aliases: []
+tags:
+- mobile
+- community
+- group
+- radio
+- 3gpp
+- geran
+- ran6
+- necessary
+- network
+- title
+- addendum
+- apologies
+- utran
+- behind
+- audit
+- standards
+- closure
+sources:
+- 2026-11-14-telequad-w01-14.md
+- 2026-11-14-telequad-w02-14.md
+- 2026-11-14-telequad-w03-14.md
+- 2026-11-14-telequad-w04-14.md
+- 2026-11-14-telequad-w05-14.md
+- 2026-11-14-telequad-w06-14.md
+- 2026-11-14-telequad-w07-14.md
+- 2026-11-14-telequad-w08-14.md
+- 2026-11-14-telequad-w09-14.md
+- 2026-11-14-telequad-w10-14.md
+created_at: '2026-11-14T05:19:08Z'
+updated_at: '2026-11-14T05:20:19Z'
+revision_count: 11
+confidence: high
+summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for
+  the GERAN and UTRAN radio and protocol work - was formally closed. The closure of
+  RAN6 marks the end ...
+---
+
+# End of an era as RAN6 closes
+
+At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for the GERAN and UTRAN radio and protocol work - was formally closed. The closure of RAN6 marks the end of a significant era for the mobile industry. The group covered work on 2G and 3G radio capabilities, carrying on from 2G's roots in the original GSM pan-European digital mobile standard. With 3G, the potential of a global market - for the equipment, handsets and for roaming - began to be achieved, as the standards community of Europe, China, Japan, Korea and North America united in 3GPP, from 1998. This highly successful project helped propel 2G evolution into 3G, and onwards towards fulfilling its promise to become the economic and technology success story of the 21st Century. Time marches on though, and although 2G and 3G are still in use today - it is time for the standards community to focus efforts on the new generations.
+
+## Related Concepts
+
+- Related trail: [[conformance-testing-ue|Conformance Testing (UE)]] — 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing, made significant progress during the recent Plenary meeting (#42), in Athens, with a set of LTE related...
+
+## Evolution & Synthesized Updates
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-14.md]** (End of an era as RAN6 closes: Extended Procedures & Parameters): As 4G evolves to 5G, we are safe in the knowledge that the GERAN and UTRAN standards, and the core network behind them are completely stable and can continue to be used for as long as there is a need. Note: update made July 9, to change title. Original title "RAN6 closure, GERAN no more" was factually inaccurate. GERAN specs will be maintained as necessary, of course. Apologies for the inaccuracy. (KF)

@@ -1,0 +1,54 @@
+---
+title: '3GPP 23012-g00: Overload Protection'
+slug: 3gpp-23012-g00-overload-protection
+category: concepts
+aliases: []
+tags:
+- shall
+- location
+- requests
+- device
+- back
+- congestion
+- 3gpp
+- network
+- timer
+- management
+- mobility
+- procedures
+- initiate
+sources:
+- 2026-11-14-telequad-w01-06.md
+- 2026-11-14-telequad-w02-06.md
+- 2026-11-14-telequad-w03-06.md
+- 2026-11-14-telequad-w04-06.md
+- 2026-11-14-telequad-w05-06.md
+- 2026-11-14-telequad-w06-06.md
+- 2026-11-14-telequad-w07-06.md
+- 2026-11-14-telequad-w08-06.md
+- 2026-11-14-telequad-w09-06.md
+- 2026-11-14-telequad-w10-06.md
+created_at: '2026-11-14T05:19:06Z'
+updated_at: '2026-11-14T05:20:16Z'
+revision_count: 11
+confidence: high
+summary: "3.7\tOverload Protection 3.7.1\tOverview As the number of mobile devices\
+  \ increase and become more automated (Machine Type Communication, MTC type devices)\
+  \ the network is at greate..."
+---
+
+# 3GPP 23012-g00: Overload Protection
+
+3.7	Overload Protection 3.7.1	Overview As the number of mobile devices increase and become more automated (Machine Type Communication, MTC type devices) the network is at greater risk of becoming overloaded. Additional mechanisms may be deployed to prevent and or control overload and congestion. This sub-clause describes such optional mechanisms. The succeeding descriptions applies to Network Mode of Operation II (requesting CS only). For NMO I (requesting both CS and PS) the procedures are described in 3GPP TS 23.060. 3.7.2	Congestion Control during Mobility Management The MSC or VLR may support the capability to reject Location Updating Requests or IMSI Attach messages from an MS if the node is experiencing congestion. The MSC/VLR may indicate the rejection is due to congestion with a specific congestion cause value and a specific back-off timer, see 3GPP TS 24.008. The Mobility Management back-off timer shall not impact Cell/RAT and PLMN change. Cell/RAT and RA change do not stop the Mobility Management back-off timer. The Mobility Management back-off timer shall not be a trigger for PLMN reselection. The back-off timer is stopped as defined in 3GPP TS 24.008 when a new PLMN that is not an equivalent PLMN is accessed.
+
+## Related Concepts
+
+- Related trail: [[wifi-overview|WiFi: Overview]] — Most common way of using WLAN would be like as follows. In most case, the main communication line would be wired line and we connect AP(Access Point) to the wired backbone as sh...
+
+## Evolution & Synthesized Updates
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-06.md]** (3GPP 23012-g00: Overload Protection: Extended Procedures & Parameters): While the Mobility Management back-off timer is running, the MS shall not initiate any Mobility Management procedures. However, the MS is allowed to initiate Mobility Management procedures for priority/emergency services and mobile terminated services even when the Mobility Management back-off timer is running. If the MS receives a paging request from the MSC/VLR while the Mobility Management back-off timer is running, the MS shall stop the Mobility Management back-off timer and initiate the CM Service Request procedure.To avoid that large amounts of MSs initiate deferred requests (almost) simultaneously, the MSC/VLR should select the Mobility Management back-off timer value so that deferred requests are not synchronised. The decision to apply congestion control is made by the MSC/VLR, the detailed criteria for which is outside the scope of this specification but may for example take into account the low access priority indication if signalled by MSs. The MSC/VLR should use implicit detach timer values that are larger than the Mobility Management back-off timer values to avoid that the MSC/VLR implicitly detaches the MS before the MS has performed a LAU procedure, which could lead to unneccessary signalling after the back-off timer expires.
+
+## Contradictions & Tensions
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-06.md]** Potential tension/nuance noted: While the Mobility Management back-off timer is running, the MS shall not initiate any Mobility Management procedures. However, the MS is allowed to initiate Mobility Management procedures for priority/emergency services and mobile terminated services even when the Mobility Management back-off timer is running. If the MS receives a paging request from the MSC/VLR while the Mobility Management back-off timer is running, the MS shall stop the Mobility Management back-off timer and initiate the CM Service Request procedure.To avoid that large amounts of MSs initiate deferred requests (almost) simultaneously, the MSC/VLR should select the Mobility Management back-off timer value so that deferred requests are not synchronised. The decision to apply congestion control is made by the MSC/VLR, the detailed criteria for which is outside the scope of this specification but may for example take into account the low access priority indication if signalled by MSs. The MSC/VLR should use implicit detach timer values that are larger than the Mobility Management back-off timer values to avoid that the MSC/VLR implicitly detaches the MS before the MS has performed a LAU procedure, which could lead to unneccessary signalling after the back-off timer expires.

@@ -1,0 +1,52 @@
+---
+title: '3GPP 52008-f00: Equipment Tracing (Tracing of IMEI)'
+slug: 3gpp-52008-f00-equipment-tracing-tracing-of-imei
+category: concepts
+aliases: []
+tags:
+- request
+- location
+- message
+- mobile
+- imei
+- tracing
+- 3gpp
+- trace
+- equipment
+- subscriber
+- required
+sources:
+- 2026-11-14-telequad-w01-13.md
+- 2026-11-14-telequad-w02-13.md
+- 2026-11-14-telequad-w03-13.md
+- 2026-11-14-telequad-w04-13.md
+- 2026-11-14-telequad-w05-13.md
+- 2026-11-14-telequad-w06-13.md
+- 2026-11-14-telequad-w07-13.md
+- 2026-11-14-telequad-w08-13.md
+- 2026-11-14-telequad-w09-13.md
+- 2026-11-14-telequad-w10-13.md
+created_at: '2026-11-14T05:19:08Z'
+updated_at: '2026-11-14T05:20:19Z'
+revision_count: 11
+confidence: high
+summary: "5.3\tEquipment Tracing (Tracing of IMEI) 5.3.1\tGeneral If the tracing of\
+  \ IMEIs is implemented then the way the trace facility is used and organized, including\
+  \ restrictions due to..."
+---
+
+# 3GPP 52008-f00: Equipment Tracing (Tracing of IMEI)
+
+5.3	Equipment Tracing (Tracing of IMEI) 5.3.1	General If the tracing of IMEIs is implemented then the way the trace facility is used and organized, including restrictions due to national laws and regulations, will be a matter for the PLMN Operator. An IMEI may be traced in order to find out the current IMSI, or the location or behaviour of faulty or stolen equipment reported via the EIR. This TS describes one method of handling IMEI tracing i.e. tracing of IMEI via the VLR. 5.3.2	Tracing of IMEI via VLR The operator may activate an equipment trace for any subscriber's equipment (IMEI) from an OSF by invoking the management function Activate Equipment Trace in one or more VLR in the HPLMN. The trace must be activated in all VLRs controlling areas where it is required to trace the target IMEI. The trace parameters are transmitted with the activation request. The following trace parameters are sent with this request: For GSM Phase 2 Mobile Stations the IMEI will be available to the Network as it can be included in the BSS-MAP message CIPHER-MODE-COMPLETE.
+
+## Related Concepts
+
+- Related trail: [[3gpp-45009-f00-transmitterreceiver-synchronisation|3GPP 45009-f00: Transmitter/Receiver Synchronisation]] — 3.2.1.3	Transmitter/Receiver Synchronisation The alternating transmission of the codec mode information requires synchronisation of transmitting and receiving ends, such that Co...
+
+## Evolution & Synthesized Updates
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-13.md]** (3GPP 52008-f00: Equipment Tracing (Tracing of IMEI): Extended Procedures & Parameters): If IMEI trace is required, it is the responsibility of the network operator to specify that CIPHER-MODE-COMPLETE contains IMEIs, or optionally the IMEI is called for in connection with MOC, location update etc. Alternatively the network can ask the MS for the IMEI by sending a TS 24.008 [19] IDENTITY REQUEST message to the MS, indicating that the IMEI is required. When a subscriber arrives at a VLR using equipment with an IMEI for which trace has been activated (but is in pending state) at that VLR then the IMEI trace will become. For each IMEI only one equipment trace can be active in a particular VLR at any one time, subsequent requests being rejected, although both the IMSI trace (home subscriber tracing and foreign subscriber tracing) and the IMEI trace can be active at the same time. This equipment trace is deactivated by invoking the management function Deactivate Equipment Trace in the VLR. This request includes the trace parameters in the following list: The following TMN Management Functions are required for trace activation (in VLR):
+
+## Contradictions & Tensions
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-13.md]** Potential tension/nuance noted: If IMEI trace is required, it is the responsibility of the network operator to specify that CIPHER-MODE-COMPLETE contains IMEIs, or optionally the IMEI is called for in connection with MOC, location update etc. Alternatively the network can ask the MS for the IMEI by sending a TS 24.008 [19] IDENTITY REQUEST message to the MS, indicating that the IMEI is required. When a subscriber arrives at a VLR using equipment with an IMEI for which trace has been activated (but is in pending state) at that VLR then the IMEI trace will become. For each IMEI only one equipment trace can be active in a particular VLR at any one time, subsequent requests being rejected, although both the IMSI trace (home subscriber tracing and foreign subscriber tracing) and the IMEI trace can be active at the same time. This equipment trace is deactivated by invoking the management function Deactivate Equipment Trace in the VLR. This request includes the trace parameters in the following list: The following TMN Management Functions are required for trace activation (in VLR):

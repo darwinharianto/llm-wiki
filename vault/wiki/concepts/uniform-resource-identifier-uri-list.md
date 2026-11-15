@@ -1,0 +1,48 @@
+---
+title: Uniform Resource Identifier (URI) list
+slug: uniform-resource-identifier-uri-list
+category: concepts
+aliases: []
+tags:
+- service
+- level
+- data
+- critical
+- device
+- 3gpp
+- protocol
+- case
+- domain
+- namespace
+- registry
+- below
+- identifier
+- list
+- etsi
+sources:
+- 2026-11-14-telequad-w01-04.md
+- 2026-11-14-telequad-w02-04.md
+- 2026-11-14-telequad-w03-04.md
+- 2026-11-14-telequad-w04-04.md
+- 2026-11-14-telequad-w05-04.md
+- 2026-11-14-telequad-w06-04.md
+- 2026-11-14-telequad-w07-04.md
+- 2026-11-14-telequad-w08-04.md
+- 2026-11-14-telequad-w09-04.md
+- 2026-11-14-telequad-w10-04.md
+created_at: '2026-11-14T05:19:06Z'
+updated_at: '2026-11-14T05:20:15Z'
+revision_count: 10
+confidence: high
+summary: 'The tables below list URIs registered by 3GPP. Applications for new entries
+  must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace
+  Specific Str...'
+---
+
+# Uniform Resource Identifier (URI) list
+
+The tables below list URIs registered by 3GPP. Applications for new entries must be made via email to the TSG CT WG1 Secretary. Applications must contain: Namespace Specific Strings (NSS) for the Namespace Identifier (NID) equal to 3gpp as described in RFC 5279: These URNs are associated with the top level identifier "3gpp-service" of the Namespace Specific Strings (NSSs) as described in RFC 6050. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) Short Data Service (SDS) IMS communication service. This URN indicates that the device has the capabilities to support the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN is also used by the device to associate a SIP request with the Mission Critical Data (MCData) File Distribution (FD) IMS communication service. This URN indicates that the device has the capabilities to support the mission critical video (MCVideo) service. These URNs are associated with the top level identifier "3gpp-application" of the Namespace Specific Strings (NSSs) as described in RFC 6050.
+
+## Evolution & Synthesized Updates
+
+- **[2026-11-14 | 2026-11-14-telequad-w04-04.md]** (Uniform Resource Identifier (URI) list: Extended Procedures & Parameters): XML Namespace Registry for the Namespace Identifier (NID) equal to 3gpp as described in RFC 5279: The XML namespace has a NID set to 3gpp. It is recommended that domain segregation of the namespace can follow: the URNs identifying namespaces are in the class "ns". Subsequent tags can follow. The model follows the following grammar: XML URI Registry for URIs used in a 3GPP TS, identifying a resource, and having a Namespace Identifier (NID) not equal to 3gpp (see RFC 5279). This registry does not register URIs used in 3GPP protocol specifications that have been assigned by other authorities, e.g. URIs already used in ETSI publications relating to core functions of the IP Multimedia Subsystem (IMS) used by the Next Generation Network standardized within ETSI Technical Committee Telecommunications and Internet converged Services and Protocols for Advanced Networking (TISPAN) (see ETSI TR 183 050 for a registry of assigned protocol numbers and names used in TISPAN protocol specifications). NOTE 1: A combination of lower and upper case letters can appear in the URN. This may be useful for reading by humans, but note that parsers do not distinguish between upper and lower case letters within URNs. (Background information for the decision to create and maintain this page can be found in C1-071726, C1-082533, C1-092017, C1-092976, C1-124619 and C1-130795.)

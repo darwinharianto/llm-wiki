@@ -1,0 +1,79 @@
+[
+  {
+    "revision": 1,
+    "timestamp": "2026-11-14T05:19:08Z",
+    "operation": "create",
+    "note": "Created from 2026-11-14-telequad-w01-14.md",
+    "diff": "+ ---\n+ title: End of an era as RAN6 closes\n+ slug: end-of-an-era-as-ran6-closes\n+ category: concepts\n+ aliases: []\n+ tags:\n+ - mobile\n+ - community\n+ - group\n+ - radio\n+ sources:\n+ - 2026-11-14-telequad-w01-14.md\n+ created_at: '2026-11-14T05:19:08Z'\n+ updated_at: '2026-11-14T05:19:08Z'\n+ revision_count: 1\n+ confidence: high\n+ summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n+   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of\n+   RAN6 marks the end ...\n+ ---\n+ \n+ # End of an era as RAN6 closes\n+ \n+ At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for the GERAN and UTRAN radio and protocol work - was formally closed. The closure of RAN6 marks the end of a significant era for the mobile industry. The group covered work on 2G and 3G radio capabilities, carrying on from 2G's roots in the original GSM pan-European digital mobile standard. With 3G, the potential of a global market - for the equipment, handsets and for roaming - began to be achieved, as the standards community of Europe, China, Japan, Korea and North America united in 3GPP, from 1998. This highly successful project helped propel 2G evolution into 3G, and onwards towards fulfilling its promise to become the economic and technology success story of the 21st Century. Time marches on though, and although 2G and 3G are still in use today - it is time for the standards community to focus efforts on the new generations."
+  },
+  {
+    "revision": 2,
+    "timestamp": "2026-11-14T05:19:10Z",
+    "operation": "lint-orphan",
+    "note": "Connected orphan page [[conformance-testing-ue]] into hub [[end-of-an-era-as-ran6-closes]]",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 1)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 2)\n@@ -11,8 +11,8 @@\n sources:\n - 2026-11-14-telequad-w01-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:08Z'\n-revision_count: 1\n+updated_at: '2026-11-14T05:19:10Z'\n+revision_count: 2\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of\n@@ -22,3 +22,7 @@\n # End of an era as RAN6 closes\n \n At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for the GERAN and UTRAN radio and protocol work - was formally closed. The closure of RAN6 marks the end of a significant era for the mobile industry. The group covered work on 2G and 3G radio capabilities, carrying on from 2G's roots in the original GSM pan-European digital mobile standard. With 3G, the potential of a global market - for the equipment, handsets and for roaming - began to be achieved, as the standards community of Europe, China, Japan, Korea and North America united in 3GPP, from 1998. This highly successful project helped propel 2G evolution into 3G, and onwards towards fulfilling its promise to become the economic and technology success story of the 21st Century. Time marches on though, and although 2G and 3G are still in use today - it is time for the standards community to focus efforts on the new generations.\n+\n+## Related Concepts\n+\n+- Related trail: [[conformance-testing-ue|Conformance Testing (UE)]] \u2014 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing, made significant progress during the recent Plenary meeting (#42), in Athens, with a set of LTE related..."
+  },
+  {
+    "revision": 3,
+    "timestamp": "2026-11-14T05:19:15Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Technical Note: End of an era as RAN6 closes' (2026-11-14-telequad-w02-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 2)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 3)\n@@ -8,11 +8,13 @@\n - community\n - group\n - radio\n+- 3gpp\n sources:\n - 2026-11-14-telequad-w01-14.md\n+- 2026-11-14-telequad-w02-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:10Z'\n-revision_count: 2\n+updated_at: '2026-11-14T05:19:15Z'\n+revision_count: 3\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 4,
+    "timestamp": "2026-11-14T05:19:23Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'End of an era as RAN6 closes \u2014 Specification Digest' (2026-11-14-telequad-w03-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 3)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 4)\n@@ -12,9 +12,10 @@\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n+- 2026-11-14-telequad-w03-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:15Z'\n-revision_count: 3\n+updated_at: '2026-11-14T05:19:23Z'\n+revision_count: 4\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 5,
+    "timestamp": "2026-11-14T05:19:30Z",
+    "operation": "update",
+    "note": "Merged 1 new insight(s) from 'End of an era as RAN6 closes: Extended Procedures & Parameters' (2026-11-14-telequad-w04-14.md) into existing page [[end-of-an-era-as-ran6-closes]] (skipped 1 redundant block(s)).",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 4)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 5)\n@@ -9,13 +9,16 @@\n - group\n - radio\n - 3gpp\n+- geran\n+- ran6\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n - 2026-11-14-telequad-w03-14.md\n+- 2026-11-14-telequad-w04-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:23Z'\n-revision_count: 4\n+updated_at: '2026-11-14T05:19:30Z'\n+revision_count: 5\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of\n@@ -29,3 +32,7 @@\n ## Related Concepts\n \n - Related trail: [[conformance-testing-ue|Conformance Testing (UE)]] \u2014 3GPP RAN5, the Working Group responsible for User Equipment (UE) testing, made significant progress during the recent Plenary meeting (#42), in Athens, with a set of LTE related...\n+\n+## Evolution & Synthesized Updates\n+\n+- **[2026-11-14 | 2026-11-14-telequad-w04-14.md]** (End of an era as RAN6 closes: Extended Procedures & Parameters): As 4G evolves to 5G, we are safe in the knowledge that the GERAN and UTRAN standards, and the core network behind them are completely stable and can continue to be used for as long as there is a need. Note: update made July 9, to change title. Original title \"RAN6 closure, GERAN no more\" was factually inaccurate. GERAN specs will be maintained as necessary, of course. Apologies for the inaccuracy. (KF)"
+  },
+  {
+    "revision": 6,
+    "timestamp": "2026-11-14T05:19:38Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'Addendum Notes on End of an era as RAN6 closes' (2026-11-14-telequad-w05-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 5)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 6)\n@@ -11,14 +11,19 @@\n - 3gpp\n - geran\n - ran6\n+- necessary\n+- network\n+- title\n+- addendum\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n - 2026-11-14-telequad-w03-14.md\n - 2026-11-14-telequad-w04-14.md\n+- 2026-11-14-telequad-w05-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:30Z'\n-revision_count: 5\n+updated_at: '2026-11-14T05:19:38Z'\n+revision_count: 6\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 7,
+    "timestamp": "2026-11-14T05:19:46Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'End of an era as RAN6 closes (Protocol Summary #6)' (2026-11-14-telequad-w06-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 6)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 7)\n@@ -15,15 +15,17 @@\n - network\n - title\n - addendum\n+- apologies\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n - 2026-11-14-telequad-w03-14.md\n - 2026-11-14-telequad-w04-14.md\n - 2026-11-14-telequad-w05-14.md\n+- 2026-11-14-telequad-w06-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:38Z'\n-revision_count: 6\n+updated_at: '2026-11-14T05:19:46Z'\n+revision_count: 7\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 8,
+    "timestamp": "2026-11-14T05:19:54Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Telecom Reference Sheet \u2014 End of an era as RAN6 closes' (2026-11-14-telequad-w07-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 7)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 8)\n@@ -16,6 +16,8 @@\n - title\n - addendum\n - apologies\n+- utran\n+- behind\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n@@ -23,9 +25,10 @@\n - 2026-11-14-telequad-w04-14.md\n - 2026-11-14-telequad-w05-14.md\n - 2026-11-14-telequad-w06-14.md\n+- 2026-11-14-telequad-w07-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:46Z'\n-revision_count: 7\n+updated_at: '2026-11-14T05:19:54Z'\n+revision_count: 8\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 9,
+    "timestamp": "2026-11-14T05:20:02Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from '3GPP Working Group Archive Memo #08-15' (2026-11-14-telequad-w08-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 8)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 9)\n@@ -26,9 +26,10 @@\n - 2026-11-14-telequad-w05-14.md\n - 2026-11-14-telequad-w06-14.md\n - 2026-11-14-telequad-w07-14.md\n+- 2026-11-14-telequad-w08-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:19:54Z'\n-revision_count: 8\n+updated_at: '2026-11-14T05:20:02Z'\n+revision_count: 9\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 10,
+    "timestamp": "2026-11-14T05:20:10Z",
+    "operation": "update",
+    "note": "Deduplicated 1 redundant block(s) from 'ETSI Field Audit Log #09-15' (2026-11-14-telequad-w09-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 9)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 10)\n@@ -18,6 +18,7 @@\n - apologies\n - utran\n - behind\n+- audit\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n@@ -27,9 +28,10 @@\n - 2026-11-14-telequad-w06-14.md\n - 2026-11-14-telequad-w07-14.md\n - 2026-11-14-telequad-w08-14.md\n+- 2026-11-14-telequad-w09-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:20:02Z'\n-revision_count: 9\n+updated_at: '2026-11-14T05:20:10Z'\n+revision_count: 10\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  },
+  {
+    "revision": 11,
+    "timestamp": "2026-11-14T05:20:19Z",
+    "operation": "update",
+    "note": "Deduplicated 2 redundant block(s) from 'Consolidated Spec Mirror: End of an era as RAN6 closes' (2026-11-14-telequad-w10-14.md); existing synthesis in [[end-of-an-era-as-ran6-closes]] already covers it.",
+    "diff": "--- a/end-of-an-era-as-ran6-closes.md (rev 10)\n+++ b/end-of-an-era-as-ran6-closes.md (rev 11)\n@@ -19,6 +19,8 @@\n - utran\n - behind\n - audit\n+- standards\n+- closure\n sources:\n - 2026-11-14-telequad-w01-14.md\n - 2026-11-14-telequad-w02-14.md\n@@ -29,9 +31,10 @@\n - 2026-11-14-telequad-w07-14.md\n - 2026-11-14-telequad-w08-14.md\n - 2026-11-14-telequad-w09-14.md\n+- 2026-11-14-telequad-w10-14.md\n created_at: '2026-11-14T05:19:08Z'\n-updated_at: '2026-11-14T05:20:10Z'\n-revision_count: 10\n+updated_at: '2026-11-14T05:20:19Z'\n+revision_count: 11\n confidence: high\n summary: At the recent RAN (#88e) plenary meeting, Working Group 6 - responsible for\n   the GERAN and UTRAN radio and protocol work - was formally closed. The closure of"
+  }
+]

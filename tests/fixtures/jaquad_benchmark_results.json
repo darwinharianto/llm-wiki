@@ -1,0 +1,112 @@
+{
+  "dataset": "JaQuAD dev_0000 (Japanese Wikipedia Question Answering)",
+  "total_passages_1x": 407,
+  "total_docs_5x": 2035,
+  "total_questions": 1029,
+  "consolidation_5x": {
+    "total_docs_ingested": 2035,
+    "created_pages": 407,
+    "updated_pages": 1628,
+    "dedup_rate_waves_2_to_5": 99.94,
+    "wave_stats": {
+      "1": {
+        "created": 406,
+        "updated": 1
+      },
+      "2": {
+        "created": 1,
+        "updated": 406
+      },
+      "3": {
+        "created": 0,
+        "updated": 407
+      },
+      "4": {
+        "created": 0,
+        "updated": 407
+      },
+      "5": {
+        "created": 0,
+        "updated": 407
+      }
+    },
+    "elapsed_s": 10.96
+  },
+  "results_1x": {
+    "e5_1x": {
+      "R@1": 74.44,
+      "R@3": 91.84,
+      "R@5": 95.92,
+      "R@10": 98.54,
+      "MRR@10": 83.48,
+      "Ans@1": 80.47,
+      "Ans@3": 93.88,
+      "Ans@5": 97.08
+    },
+    "wiki_1x": {
+      "R@1": 81.54,
+      "R@3": 95.04,
+      "R@5": 97.28,
+      "R@10": 98.64,
+      "MRR@10": 88.63,
+      "Ans@1": 86.01,
+      "Ans@3": 96.02,
+      "Ans@5": 97.96
+    },
+    "hybrid_1x": {
+      "R@1": 86.2,
+      "R@3": 97.67,
+      "R@5": 98.93,
+      "R@10": 99.71,
+      "MRR@10": 91.98,
+      "Ans@1": 91.06,
+      "Ans@3": 98.35,
+      "Ans@5": 99.32
+    }
+  },
+  "results_5x": {
+    "e5_5x_raw": {
+      "R@1": 80.37,
+      "R@3": 88.05,
+      "R@5": 91.93,
+      "R@10": 97.28,
+      "MRR@10": 85.42,
+      "Ans@1": 85.91,
+      "Ans@3": 91.93,
+      "Ans@5": 94.66,
+      "avg_unique_topics_top10": 3.42,
+      "wasted_duplicate_slots_pct": 65.79
+    },
+    "wiki_5x_consolidated": {
+      "R@1": 81.44,
+      "R@3": 94.75,
+      "R@5": 97.38,
+      "R@10": 98.74,
+      "MRR@10": 88.54,
+      "Ans@1": 85.91,
+      "Ans@3": 95.72,
+      "Ans@5": 97.96,
+      "avg_unique_topics_top10": 9.94,
+      "wasted_duplicate_slots_pct": 0.0
+    },
+    "hybrid_5x_consolidated": {
+      "R@1": 84.55,
+      "R@3": 97.08,
+      "R@5": 98.15,
+      "R@10": 99.71,
+      "MRR@10": 90.95,
+      "Ans@1": 89.31,
+      "Ans@3": 97.86,
+      "Ans@5": 98.74,
+      "avg_unique_topics_top10": 10.0,
+      "wasted_duplicate_slots_pct": 0.0
+    }
+  },
+  "timings_s": {
+    "e5_1x_index_s": 78.1,
+    "wiki_1x_index_s": 0.83,
+    "e5_5x_index_s": 585.69,
+    "wiki_5x_consolidate_s": 12.61,
+    "q_encode_s": 4.77
+  }
+}

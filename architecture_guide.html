@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Wiki — Architecture, Ingestion Pipeline & Storage Guide</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Semantic theme fallbacks when opened directly in a standalone browser tab outside the IDE */
+    html {
+      --bg-page: var(--background, #0b1020);
+      --bg-card: var(--card, #131b2e);
+      --bg-sidebar: var(--sidebar, #0f1626);
+      --border-subtle: var(--card-border, rgba(148, 163, 184, 0.22));
+      --text-main: var(--foreground, #f1f5f9);
+      --text-muted: var(--muted-foreground, #94a3b8);
+      --accent-primary: var(--primary, #38bdf8);
+      --accent-secondary: var(--accent, #a78bfa);
+      --status-success: var(--success, #34d399);
+      --status-warning: var(--warning, #fbbf24);
+      --status-error: var(--error, #f87171);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Modern Web Guidance: Responsive Table with @container queries & sticky headers */
+    .table-wrapper {
+      overflow: auto;
+      max-inline-size: 100%;
+      max-block-size: min(540px, 80vh);
+      container-type: inline-size;
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.75rem;
+      background: var(--bg-card);
+    }
+
+    .table-wrapper table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.85rem;
+    }
+
+    .table-wrapper thead {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 2;
+      background: var(--bg-sidebar);
+    }
+
+    .table-wrapper th,
+    .table-wrapper td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-block-end: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    .table-wrapper td.wrap-cell {
+      white-space: normal;
+      min-inline-size: 220px;
+    }
+
+    .table-wrapper tbody th {
+      position: sticky;
+      inset-inline-start: 0;
+      z-index: 1;
+      background: var(--bg-card);
+      font-weight: 600;
+      border-inline-end: 1px solid var(--border-subtle);
+    }
+
+    @container (width < 600px) {
+      .table-wrapper table,
+      .table-wrapper thead,
+      .table-wrapper tbody,
+      .table-wrapper tr,
+      .table-wrapper th,
+      .table-wrapper td {
+        display: block;
+        white-space: normal;
+      }
+
+      .table-wrapper thead {
+        display: none;
+      }
+
+      .table-wrapper tr {
+        margin-block-end: 1rem;
+        border: 1px solid var(--border-subtle);
+        border-radius: 0.5rem;
+        overflow: clip;
+      }
+
+      .table-wrapper tbody th {
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 2;
+        background: var(--bg-sidebar);
+        border-inline-end: none;
+      }
+
+      .table-wrapper td:nth-child(2)::before {
+        content: var(--label-2) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .table-wrapper td:nth-child(3)::before {
+        content: var(--label-3) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .table-wrapper td:nth-child(4)::before {
+        content: var(--label-4) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .table-wrapper td:nth-child(5)::before {
+        content: var(--label-5) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .table-wrapper td:nth-child(6)::before {
+        content: var(--label-6) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .table-wrapper td:nth-child(7)::before {
+        content: var(--label-7) ": ";
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+    }
+
+    /* Modern Web Guidance: Native <details> Accordion with ::details-content & custom ::before chevron */
+    .accordion > details {
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.75rem;
+      background: var(--bg-card);
+      margin-block-end: 0.75rem;
+      overflow: clip;
+    }
+
+    .accordion > details > summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.65ch;
+      padding: 0.9rem 1.1rem;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .accordion > details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion > details > summary:where(:not([aria-disabled="true"])) {
+      cursor: pointer;
+    }
+
+    .accordion > details > summary:where(:not([aria-disabled="true"])):hover {
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .accordion > details > summary::before {
+      content: "";
+      inline-size: 1em;
+      block-size: 1em;
+      flex-shrink: 0;
+      background-color: currentColor;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center / contain;
+      rotate: -90deg;
+    }
+
+    .accordion > details > summary:dir(rtl)::before {
+      rotate: 90deg;
+    }
+
+    .accordion > details[open] > summary::before {
+      rotate: 0deg;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion > details > summary::before {
+        transition: rotate 0.2s;
+      }
+    }
+
+    .accordion > details::details-content {
+      interpolate-size: allow-keywords;
+      overflow: clip;
+      contain: layout;
+    }
+
+    .accordion > details:not([open])::details-content {
+      block-size: 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion > details::details-content {
+        transition: block-size, content-visibility, display;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-in-out;
+        transition-behavior: allow-discrete;
+      }
+    }
+
+    [command="--toggle-all"][aria-expanded="true"] .expand,
+    [command="--toggle-all"][aria-expanded="false"] .collapse {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-sky-500/30">
+
+  <!-- Sticky Top Navigation -->
+  <header class="sticky top-0 z-30 backdrop-blur-md bg-[var(--bg-sidebar)]/90 border-b border-[var(--border-subtle)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-300 font-mono font-bold text-sm">[[W]]</span>
+        <div>
+          <h1 class="text-sm sm:text-base font-bold tracking-tight">LLM Wiki Architecture &amp; Data Lifecycle Guide</h1>
+          <p class="text-xs text-[var(--text-muted)]">Workspace: <code class="font-mono text-sky-300">/home/darwin/llm-wiki</code> • Live Server: <code class="font-mono text-emerald-300">http://127.0.0.1:8000</code></p>
+        </div>
+      </div>
+      <nav aria-label="Architecture guide sections" class="flex flex-wrap items-center gap-1.5 text-xs">
+        <a href="#stack" class="px-2.5 py-1.5 rounded-md hover:bg-sky-500/15 text-[var(--text-muted)] hover:text-[var(--text-main)] transition">1. Tech Stack</a>
+        <a href="#storage" class="px-2.5 py-1.5 rounded-md hover:bg-sky-500/15 text-[var(--text-muted)] hover:text-[var(--text-main)] transition">2. Where Data Lives</a>
+        <a href="#pipeline" class="px-2.5 py-1.5 rounded-md hover:bg-sky-500/15 text-[var(--text-muted)] hover:text-[var(--text-main)] transition">3. Ingest &amp; Similarity</a>
+        <a href="#simulator" class="px-2.5 py-1.5 rounded-md bg-sky-500/20 border border-sky-400/40 text-sky-200 font-medium">4. Interactive Ingest Simulator</a>
+        <a href="#ui-flow" class="px-2.5 py-1.5 rounded-md hover:bg-sky-500/15 text-[var(--text-muted)] hover:text-[var(--text-main)] transition">5. UI &amp; API Flow</a>
+        <a href="#benchmarks" class="px-2.5 py-1.5 rounded-md hover:bg-sky-500/15 text-[var(--text-muted)] hover:text-[var(--text-main)] transition">6. Benchmarks</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-12">
+
+    <!-- Hero Banner: Stateless RAG vs Compiled LLM Wiki -->
+    <section class="rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-6">
+      <div class="max-w-3xl space-y-2">
+        <span class="inline-block text-xs font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-400/30">Andrej Karpathy's Compiled Knowledge Pattern</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">How LLM Wiki Ingests, Consolidates, Stores, and Displays Knowledge</h2>
+        <p class="text-sm text-[var(--text-muted)]">
+          Unlike stateless vector RAG—which slices raw documents into isolated chunks, stores duplicate copies forever, and re-synthesizes from scratch at query time—<strong>LLM Wiki</strong> compiles incoming documents into a self-maintaining, interlinked Markdown vault on disk. Every new source is compared against existing pages first: redundant passages are deduplicated, while novel facts and contradictions update the canonical page in-place with a full unified diff audit trail.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div class="rounded-xl p-4 bg-rose-500/5 border border-rose-500/25 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-rose-300 font-semibold">Traditional Stateless Vector RAG (E5-Large)</span>
+            <span class="text-xs font-mono text-rose-300">~80% Top-10 Wasted Slots at 10x</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)]">
+            <code>Raw Docs (10x Redundant)</code> → <code>Fixed Chunking</code> → <code>Dense Embedding Index</code> → <code>Top-K Retrieval Polluted by 10 Identical Copies</code>
+          </p>
+          <ul class="text-xs text-[var(--text-muted)] list-disc list-inside space-y-1">
+            <li>No write-time deduplication: 10 waves of 536 passages create 5,360 separate vector entries.</li>
+            <li>Top-10 results collapse to just <strong>2.01 unique topics</strong> (79.9% duplicate slots).</li>
+            <li>Counterfactual updates sit alongside outdated chunks with no explicit contradiction record.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl p-4 bg-emerald-500/5 border border-emerald-500/25 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-emerald-300 font-semibold">Compiled LLM Wiki (Write-Time Synthesis)</span>
+            <span class="text-xs font-mono text-emerald-300">99.67% Redundancy Consolidated</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)]">
+            <code>Raw Doc</code> → <code>vault/raw/</code> → <code>4-Signal Similarity Check</code> → <code>In-Place Page Update + Unified Diff</code> → <code>Interlinked Markdown Vault</code>
+          </p>
+          <ul class="text-xs text-[var(--text-muted)] list-disc list-inside space-y-1">
+            <li>Consolidates 5,360 English passages into <strong>548 pages</strong> (and 2,035 Japanese passages into <strong>407 pages</strong>).</li>
+            <li>Preserves <strong>9.56 / 10 unique topics</strong> in Top-10 (`R@10 = 95.85%` vs E5's `64.24%`).</li>
+            <li>Tracks every revision in <code>vault/.history/</code> and surfaces tensions under <code>## Contradictions &amp; Tensions</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: WHAT IS USED (TECH STACK & MODULES) -->
+    <section id="stack" class="space-y-4">
+      <div class="space-y-1">
+        <h2 class="text-xl font-bold tracking-tight">1. What Is Used — Complete Technology Stack &amp; Source Modules</h2>
+        <p class="text-xs text-[var(--text-muted)]">
+          Every component is built with transparent, inspectable Python and vanilla web standards—no opaque vector database daemons or heavy frontend bundlers required.
+        </p>
+      </div>
+
+      <div tabindex="0" role="region" aria-labelledby="stack-table-caption" class="table-wrapper">
+        <table style="--label-2: 'File Path'; --label-3: 'Technology / Libraries'; --label-4: 'Core Responsibility'; --label-5: 'Key Classes / Functions';">
+          <caption id="stack-table-caption" class="sr-only">LLM Wiki technology stack and module responsibilities</caption>
+          <thead>
+            <tr>
+              <th scope="col">Subsystem</th>
+              <th scope="col">File Path</th>
+              <th scope="col">Technology / Libraries</th>
+              <th scope="col">Core Responsibility</th>
+              <th scope="col">Key Classes &amp; Functions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">HTTP Server &amp; Lifecycle</th>
+              <td><code>backend/app.py</code></td>
+              <td>FastAPI, Uvicorn, Pydantic v2, AsyncIO</td>
+              <td class="wrap-cell">REST endpoints, static frontend serving, and background periodic health maintenance loop.</td>
+              <td><code>create_app()</code>, <code>periodic_maintainer()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Orchestration Engine</th>
+              <td><code>backend/wiki_engine.py</code></td>
+              <td>Python 3.13 Standard Library</td>
+              <td class="wrap-cell">Coordinates ingest preview/execution, similarity routing, page merge, grounded chat, and file-to-wiki loop.</td>
+              <td><code>WikiEngine.preview_ingest()</code>, <code>execute_ingest()</code>, <code>answer_question()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Markdown Vault Manager</th>
+              <td><code>backend/vault_manager.py</code></td>
+              <td>PyYAML, <code>difflib</code>, <code>unicodedata</code>, Regex</td>
+              <td class="wrap-cell">Reads/writes Markdown files with YAML frontmatter, parses <code>[[slug|Label]]</code> wikilinks, computes backlinks, saves raw sources &amp; unified diffs.</td>
+              <td><code>VaultManager</code>, <code>WikiPage</code>, <code>slugify()</code>, <code>rebuild_index_md()</code>, <code>append_log()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Hybrid Similarity Engine</th>
+              <td><code>backend/similarity.py</code></td>
+              <td>Pure Python Inverted Index (BM25 + TF-IDF + Graph + CJK Tokenizer)</td>
+              <td class="wrap-cell">Scores incoming notes against existing pages to decide <code>UPDATE</code> vs <code>CREATE</code>, and powers sub-millisecond multi-signal search in English &amp; Japanese.</td>
+              <td><code>HybridSimilarityEngine</code>, <code>tokenize()</code>, <code>find_similar_for_candidate()</code>, <code>search()</code>, <code>upsert_page()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">LLM &amp; Smart Synthesis</th>
+              <td><code>backend/llm_providers.py</code></td>
+              <td><code>google-genai</code> (Gemini), <code>httpx</code> (OpenAI/Ollama), Deterministic Synthesizer</td>
+              <td class="wrap-cell">Extracts candidate topics, filters redundant sentences, preserves novel numbers/contradictions, weaves wikilinks, and synthesizes cited answers.</td>
+              <td><code>LLMService</code>, <code>_local_synthesize_page_update()</code>, <code>_is_redundant_unit()</code>, <code>_local_answer_query()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Self-Healing Linter</th>
+              <td><code>backend/linter.py</code></td>
+              <td>Graph &amp; Regex Auditor</td>
+              <td class="wrap-cell">Audits 6 structural health signals (unlinked mentions, orphans, dangling links, near-duplicates, stale summaries, index drift) and auto-heals them.</td>
+              <td><code>WikiLinter.audit()</code>, <code>WikiLinter.auto_maintain()</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Interactive Web Studio</th>
+              <td><code>frontend/index.html</code>, <code>app.js</code>, <code>styles.css</code></td>
+              <td>Vanilla ES6 JS, HTML5 <code>&lt;canvas&gt;</code>, CSS Grid/Variables</td>
+              <td class="wrap-cell">5-tab workbench: Wiki Explorer + Diff Drawer, Force-Directed Graph Canvas, Ingest Studio, Health Linter, and Grounded Chat.</td>
+              <td><code>renderPageDetail()</code>, <code>startGraphSimulation()</code>, <code>runIngestPreview()</code>, <code>sendChatQuestion()</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHERE DATA LIVES ON DISK -->
+    <section id="storage" class="space-y-4">
+      <div class="space-y-1">
+        <h2 class="text-xl font-bold tracking-tight">2. Where Everything Lives on Disk — Vault File Architecture</h2>
+        <p class="text-xs text-[var(--text-muted)]">
+          All persistent knowledge lives inside plain-text files under <code>/home/darwin/llm-wiki/vault/</code>. There is no hidden database binary—you can open the folder in Obsidian, VS Code, or Git and inspect every page, link, and revision diff directly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Directory Tree -->
+        <div class="lg:col-span-5 rounded-xl p-5 bg-[var(--bg-card)] border border-[var(--border-subtle)] font-mono text-xs space-y-2 overflow-x-auto">
+          <div class="text-sky-300 font-semibold pb-1 border-b border-[var(--border-subtle)]">/home/darwin/llm-wiki/</div>
+          <pre class="text-xs leading-relaxed text-[var(--text-main)]">├── backend/
+│   ├── app.py              <span class="text-[var(--text-muted)]"># FastAPI routes &amp; lifespan</span>
+│   ├── config.py           <span class="text-[var(--text-muted)]"># RuntimeSettings (env / UI)</span>
+│   ├── wiki_engine.py      <span class="text-[var(--text-muted)]"># Ingest, merge &amp; chat orchestrator</span>
+│   ├── vault_manager.py    <span class="text-[var(--text-muted)]"># Markdown + YAML + .history I/O</span>
+│   ├── similarity.py       <span class="text-[var(--text-muted)]"># 4-signal BM25/TF-IDF/Graph + CJK</span>
+│   ├── llm_providers.py    <span class="text-[var(--text-muted)]"># Gemini / OpenAI / Ollama / Local</span>
+│   └── linter.py           <span class="text-[var(--text-muted)]"># 6-check auditor &amp; self-healer</span>
+├── frontend/
+│   ├── index.html          <span class="text-[var(--text-muted)]"># 5-view single-page studio</span>
+│   ├── styles.css          <span class="text-[var(--text-muted)]"># Studio layout &amp; diff styling</span>
+│   └── app.js              <span class="text-[var(--text-muted)]"># API client &amp; canvas physics graph</span>
+└── <span class="text-emerald-300 font-bold">vault/</span>                  <span class="text-emerald-300"># PERSISTENT KNOWLEDGE BASE</span>
+    ├── <span class="text-amber-300">SCHEMA.md</span>           <span class="text-[var(--text-muted)]"># Vault conventions &amp; rules</span>
+    ├── <span class="text-amber-300">index.md</span>            <span class="text-[var(--text-muted)]"># Auto-rebuilt category catalog</span>
+    ├── <span class="text-amber-300">log.md</span>              <span class="text-[var(--text-muted)]"># Append-only ingest/heal log</span>
+    ├── <span class="text-sky-300">raw/</span>                <span class="text-[var(--text-muted)]"># Immutable raw source archive</span>
+    │   └── 20261114T0649Z-3gpp-note.md
+    ├── <span class="text-purple-300">wiki/</span>               <span class="text-[var(--text-muted)]"># Compiled canonical wiki pages</span>
+    │   ├── concepts/
+    │   │   ├── llm-wiki-pattern.md
+    │   │   └── 東京タワー.md
+    │   ├── entities/
+    │   ├── comparisons/
+    │   ├── sources/
+    │   └── syntheses/
+    └── <span class="text-rose-300">.history/</span>           <span class="text-[var(--text-muted)]"># Per-page revision diffs (JSON)</span>
+        └── llm-wiki-pattern/
+            └── 20261114T065210Z.json</pre>
+        </div>
+
+        <!-- Anatomy of a Compiled Wiki Page + Revision History -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="rounded-xl p-5 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-purple-300">Anatomy of a Compiled Wiki Page (<code>vault/wiki/&lt;category&gt;/&lt;slug&gt;.md</code>)</h3>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-purple-500/15 text-purple-300">YAML Frontmatter + Interlinked Markdown</span>
+            </div>
+            <pre class="text-xs font-mono p-3.5 rounded-lg bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] overflow-x-auto leading-relaxed">---
+title: LLM Wiki Pattern
+slug: llm-wiki-pattern
+category: concepts
+summary: Compiling raw sources into a persistent, self-maintaining Markdown wiki.
+tags:
+  - llm-wiki
+  - knowledge-base
+  - synthesis
+aliases:
+  - Compiled Wiki Pattern
+sources:
+  - 20260405-karpathy-llm-wiki.md
+  - 20261114T0652Z-zephyr-7-addendum.md
+updated_at: '2026-11-14T06:52:10+00:00'
+revision_count: 3
+---
+# LLM Wiki Pattern
+
+Instead of slicing documents into stateless vector chunks (see [[rag-vs-compiled-wiki|RAG vs Compiled Wiki]]),
+the **LLM Wiki Pattern** compiles new notes into canonical Markdown pages linked to [[vannevar-bush-memex|Vannevar Bush Memex]].
+
+## Evolution &amp; Synthesized Updates
+
+- **[2026-11-14 | zephyr-7-addendum.md]** (Zephyr-7 Self-Compaction Protocol): Unlike stateless indexers,
+  the Zephyr-7 protocol prunes redundant backlinks every 144 hours using Merkle-Markdown trees.
+
+## Contradictions &amp; Tensions
+
+- **[2026-11-14 | zephyr-7-addendum.md]** Potential tension/nuance noted: Unlike stateless indexers...</pre>
+          </div>
+
+          <div class="rounded-xl p-5 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-rose-300">Anatomy of a Revision Snapshot (<code>vault/.history/&lt;slug&gt;/&lt;timestamp&gt;.json</code>)</h3>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-500/15 text-rose-300">Unified Diff Audit Trail</span>
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Every time <code>VaultManager.save_page()</code> updates an existing page (`is_update == True`), it computes a line-by-line unified diff via Python's <code>difflib.unified_diff</code> and writes a timestamped JSON snapshot before overwriting the Markdown file.
+            </p>
+            <pre class="text-xs font-mono p-3.5 rounded-lg bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] overflow-x-auto leading-relaxed">{
+  "timestamp": "20261114T065210Z",
+  "slug": "llm-wiki-pattern",
+  "action": "update",
+  "source_ref": "20261114T0652Z-zephyr-7-addendum.md",
+  "change_note": "Merged 1 new insight(s) into existing page [[llm-wiki-pattern]] (skipped 2 redundant block(s)).",
+  "unified_diff": "--- a/llm-wiki-pattern.md (rev 2)\n+++ b/llm-wiki-pattern.md (rev 3)\n@@ -14,0 +15,4 @@\n+## Evolution &amp; Synthesized Updates\n+\n+- **[2026-11-14 | zephyr-7-addendum.md]**: Unlike stateless indexers..."
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STEP-BY-STEP INGESTION & SIMILARITY PIPELINE (ACCORDION) -->
+    <section id="pipeline" class="accordion space-y-3" aria-labelledby="pipeline-heading">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h2 id="pipeline-heading" class="text-xl font-bold tracking-tight">3. Deep-Dive: How LLM Wiki Ingests, Deduplicates &amp; Synthesizes Data</h2>
+          <p class="text-xs text-[var(--text-muted)]">
+            Click any stage below to inspect the exact algorithms, mathematical formulas, and code paths executed during ingestion.
+          </p>
+        </div>
+        <button
+          type="button"
+          commandfor="pipeline"
+          command="--toggle-all"
+          aria-expanded="false"
+          class="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 border border-sky-400/30 transition"
+        >
+          <span class="expand">Expand all stages</span>
+          <span class="collapse">Collapse all stages</span>
+        </button>
+      </div>
+
+      <details open>
+        <summary>Stage 1 — Immutable Raw Archival &amp; Candidate Topic Extraction (<code>WikiEngine.preview_ingest</code> / <code>LLMService.extract_candidates</code>)</summary>
+        <div class="px-5 pb-5 pt-2 border-t border-[var(--border-subtle)] text-xs space-y-3">
+          <p class="text-[var(--text-muted)]">
+            When you submit a document via the UI or <code>POST /api/ingest/execute</code>, LLM Wiki never discards your original text:
+          </p>
+          <ol class="list-decimal list-inside space-y-1.5 text-[var(--text-main)]">
+            <li><strong>Archive Raw Source</strong>: <code>VaultManager.save_raw_source(title, content, source_name)</code> writes an immutable copy to <code>vault/raw/&lt;UTC-timestamp&gt;-&lt;slug&gt;.md</code> with YAML metadata (<code>title</code>, <code>ingested_at</code>).</li>
+            <li><strong>Extract Candidate Topic(s)</strong>:
+              <ul class="list-disc list-inside pl-5 mt-1 text-[var(--text-muted)] space-y-1">
+                <li>In <strong>Cloud/Local LLM mode</strong> (<code>gemini</code> / <code>openai</code> / <code>ollama</code>), the LLM extracts structured JSON candidates (<code>title</code>, <code>category</code>, <code>aliases</code>, <code>tags</code>, <code>summary</code>, <code>body</code>).</li>
+                <li>In <strong>Smart Offline Synthesis mode</strong> (<code>local_smart</code>), <code>_local_extract_candidates()</code> infers the category (<code>concepts</code>, <code>entities</code>, <code>comparisons</code>, <code>sources</code>, <code>syntheses</code>), extracts top domain tags via <code>_extract_tags()</code>, and weaves outbound <code>[[slug|Title]]</code> wikilinks for any existing wiki entities mentioned in the prose via <code>_weave_wikilinks()</code>.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Stage 2 — Multilingual (English + Japanese/CJK) Tokenization &amp; Inverted Index (<code>backend/similarity.py</code>)</summary>
+        <div class="px-5 pb-5 pt-2 border-t border-[var(--border-subtle)] text-xs space-y-3">
+          <p class="text-[var(--text-muted)]">
+            To run 100% locally in milliseconds without external vector DB dependencies, <code>HybridSimilarityEngine</code> builds an in-memory inverted index over all pages in <code>vault/wiki/</code>:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-3.5 rounded-lg bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] space-y-1.5">
+              <div class="font-mono font-semibold text-sky-300">English / Technical 3GPP Fast Path</div>
+              <p class="text-[var(--text-muted)]">
+                When <code>has_cjk(text)</code> is <code>False</code>, <code>tokenize()</code> extracts <code>[a-z0-9]+</code> tokens (<code>len &gt; 1</code>) and removes <code>STOPWORDS</code>, preserving technical identifiers like <code>ts</code>, <code>38</code>, <code>401</code>, <code>ran2</code>, <code>pdcp</code>, and <code>gnodeb</code>.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-lg bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] space-y-1.5">
+              <div class="font-mono font-semibold text-purple-300">Japanese / CJK NFKC Morpheme &amp; N-Gram Path</div>
+              <p class="text-[var(--text-muted)]">
+                When <code>has_cjk(text)</code> is <code>True</code>, <code>tokenize()</code> applies <code>unicodedata.normalize("NFKC", text)</code> and extracts:
+              </p>
+              <ul class="list-disc list-inside text-[var(--text-muted)] space-y-0.5">
+                <li><strong>Kanji runs</strong> (<code>[\u4e00-\u9fff...]+</code>) + overlapping 2-char Kanji bigrams for compound nouns (<code>東大寺の仏像</code> → <code>東大寺</code>, <code>東大</code>, <code>大寺</code>, <code>仏像</code>)</li>
+                <li><strong>Katakana runs</strong> (<code>[\u30a0-\u30ffー]+</code>) + 2–3 char sub-grams for loanwords</li>
+                <li><strong>Hiragana stems</strong> with trailing particle stripping and <code>JA_STOPWORDS</code> filtering</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Stage 3 — 4-Signal Hybrid Similarity Routing: <code>UPDATE</code> vs. <code>CREATE</code> (<code>find_similar_for_candidate</code>)</summary>
+        <div class="px-5 pb-5 pt-2 border-t border-[var(--border-subtle)] text-xs space-y-3">
+          <p class="text-[var(--text-muted)]">
+            Before creating any file, <code>HybridSimilarityEngine.find_similar_for_candidate()</code> retrieves the top candidate pages from its Title, BM25, and TF-IDF postings lists and computes a weighted composite score:
+          </p>
+          <pre class="font-mono p-3 rounded-lg bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] text-sky-200 overflow-x-auto">Composite Score = 0.32 × Title_Alias_Score
+                + 0.30 × Okapi_BM25_Score (k1 = 1.5, b = 0.75)
+                + 0.23 × TFIDF_Cosine_Score (unigrams + word bigrams + title char trigrams)
+                + 0.15 × Graph_Tag_Link_Jaccard</pre>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-3.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 space-y-1">
+              <div class="font-semibold text-emerald-300">When does it route to <code>UPDATE</code> (<code>score &gt;= 0.35</code>)?</div>
+              <p class="text-[var(--text-muted)]">
+                1. <strong>Title/Alias Inclusion</strong> (<code>has_title_inclusion</code>): Exact slug match, alias match, or multi-token title substring match.<br/>
+                2. <strong>Blind-Title Near-Duplicate Body</strong> (<code>is_near_dup_body</code>): Even if the incoming document has a completely different, blind title (e.g., <code>3GPP Archive Memo #08-042</code> or <code>調査メモ #012</code>), if <code>tf_sc &gt;= 0.84</code> or <code>(tf_sc &gt;= 0.52 and body_containment &gt;= 0.92 and body_jaccard &gt;= 0.88)</code> against the clean prose body (<code>body_tok_sets[slug]</code>), it routes to <code>UPDATE</code>!
+              </p>
+            </div>
+            <div class="p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/30 space-y-1">
+              <div class="font-semibold text-amber-300">How does it prevent false merges between sibling clauses?</div>
+              <p class="text-[var(--text-muted)]">
+                In technical specs (like 3GPP TeleQuAD or Wikipedia articles with multiple sections), two distinct passages may share domain vocabulary. If a full passage (<code>&gt;= 12</code> body tokens) has <strong>neither</strong> title inclusion nor a near-duplicate body, its score is capped at <code>0.34 × tf_sc</code> (below the <code>0.35</code> threshold) so distinct sub-clauses create separate canonical pages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Stage 4 — Sentence-Level Redundancy Filtering vs. Counterfactual Update Synthesis (<code>_local_synthesize_page_update</code>)</summary>
+        <div class="px-5 pb-5 pt-2 border-t border-[var(--border-subtle)] text-xs space-y-3">
+          <p class="text-[var(--text-muted)]">
+            Once an incoming document is routed to <code>UPDATE</code> an existing page, LLM Wiki does <strong>not</strong> blindly append the whole document. Instead, <code>_local_synthesize_page_update()</code> splits the incoming text into paragraphs and technical sentences (via <code>_split_technical_sentences()</code>, which respects <code>e.g.</code>, <code>i.e.</code>, <code>Fig.</code>, <code>Dr.</code>, and Japanese <code>。！？</code>) and checks each unit with <code>_is_redundant_unit()</code>:
+          </p>
+          <ul class="list-disc list-inside space-y-1.5 text-[var(--text-main)]">
+            <li><strong>Novel Number / Counterfactual Guard (Checked First!)</strong>: <code>_extract_numbers()</code> extracts all numeric values (including numbers attached to Japanese counters like <code>1958年</code> or <code>341.5メートル</code>). If a sentence introduces <strong>any new number</strong> not present in the existing page (`unit_nums - existing_numbers`), <code>_is_redundant_unit()</code> immediately returns <code>False</code> so factual revisions and counterfactual updates are never dropped.</li>
+            <li><strong>Normalized Substring Check</strong>: If the normalized sentence is already a substring of the existing page body and introduces no new numbers, it is skipped as redundant.</li>
+            <li><strong>Token Containment Check (`&gt;= 0.78`)</strong>: If <code>&gt;= 78%</code> of the sentence's tokens already appear in any existing paragraph or sentence segment on the page, it is skipped.</li>
+            <li><strong>Word-Bigram Containment Check (`&gt;= 0.75`)</strong>: If <code>&gt;= 75%</code> of the sentence's 2-word phrases already exist in the page's bigram set, it is skipped—even if sentences were re-ordered or merged across waves.</li>
+            <li><strong>Contradiction &amp; Tension Detection</strong>: Any kept novel block containing a marker in <code>CONTRADICTION_MARKERS</code> (<code>however</code>, <code>contrary to</code>, <code>unlike</code>, <code>supersedes</code>, <code>revision</code>, <code>しかし</code>, <code>改訂</code>, etc.) is also logged under <code>## Contradictions &amp; Tensions</code> with a source/date stamp.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Stage 5 — Incremental Index Upsert, Unified Diff Snapshot &amp; Self-Healing Linter (<code>VaultManager</code> &amp; <code>WikiLinter</code>)</summary>
+        <div class="px-5 pb-5 pt-2 border-t border-[var(--border-subtle)] text-xs space-y-3">
+          <p class="text-[var(--text-muted)]">
+            After synthesis completes:
+          </p>
+          <ol class="list-decimal list-inside space-y-1.5 text-[var(--text-main)]">
+            <li><code>VaultManager.save_page()</code> increments <code>revision_count</code>, appends the raw source filename to <code>sources</code> in the YAML frontmatter, writes the unified diff JSON to <code>vault/.history/&lt;slug&gt;/&lt;timestamp&gt;.json</code>, and updates <code>vault/wiki/&lt;category&gt;/&lt;slug&gt;.md</code>.</li>
+            <li><code>VaultManager.rebuild_index_md()</code> regenerates <code>vault/index.md</code> and <code>VaultManager.append_log()</code> records the operation in <code>vault/log.md</code>.</li>
+            <li>If <code>auto_maintain_after_ingest</code> is enabled, <code>WikiLinter.auto_maintain()</code> scans all pages for unlinked entity mentions, orphan pages with 0 inbound/outbound links, and dangling <code>[[wikilinks]]</code>, automatically weaving missing links and connecting isolated pages into the knowledge graph.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE INGESTION & STORAGE SIMULATOR -->
+    <section id="simulator" class="rounded-2xl p-6 sm:p-8 bg-[var(--bg-card)] border border-sky-400/30 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
+        <div class="space-y-1">
+          <span class="text-xs font-mono uppercase tracking-wider text-sky-300">Interactive Walkthrough</span>
+          <h2 class="text-xl font-bold tracking-tight">4. Live Ingestion Pipeline &amp; Disk State Explorer</h2>
+          <p class="text-xs text-[var(--text-muted)]">
+            Select a real ingestion scenario below to trace how an incoming document flows through <code>HybridSimilarityEngine</code>, <code>_local_synthesize_page_update()</code>, and onto disk inside <code>vault/</code>.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Select ingestion scenario">
+          <button type="button" data-scenario="dup" class="scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-sky-500 text-slate-950 transition">
+            1. 10x Redundant Wave (Skip Bloat)
+          </button>
+          <button type="button" data-scenario="counterfactual" class="scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--bg-sidebar)] text-[var(--text-muted)] border border-[var(--border-subtle)] hover:text-[var(--text-main)] transition">
+            2. Counterfactual Update (Merge + Diff)
+          </button>
+          <button type="button" data-scenario="japanese" class="scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--bg-sidebar)] text-[var(--text-muted)] border border-[var(--border-subtle)] hover:text-[var(--text-main)] transition">
+            3. Japanese CJK Ingest &amp; Revision
+          </button>
+          <button type="button" data-scenario="create" class="scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--bg-sidebar)] text-[var(--text-muted)] border border-[var(--border-subtle)] hover:text-[var(--text-main)] transition">
+            4. Novel Topic (Create New Page)
+          </button>
+        </div>
+      </div>
+
+      <!-- 4-Column Pipeline Inspector -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 text-xs">
+        <!-- Col 1: Incoming Payload -->
+        <div class="lg:col-span-4 rounded-xl p-4 bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-sky-300">① Incoming Payload</span>
+            <span id="sim-raw-path" class="font-mono text-[11px] text-[var(--text-muted)]">vault/raw/...</span>
+          </div>
+          <div class="space-y-1">
+            <div class="text-[var(--text-muted)]">Document Title:</div>
+            <div id="sim-input-title" class="font-semibold text-sm text-[var(--text-main)]"></div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-[var(--text-muted)]">Raw Content:</div>
+            <pre id="sim-input-body" class="font-mono text-xs whitespace-pre-wrap p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-subtle)] leading-relaxed"></pre>
+          </div>
+        </div>
+
+        <!-- Col 2: Similarity & Sentence Filter -->
+        <div class="lg:col-span-4 rounded-xl p-4 bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-purple-300">② Similarity &amp; Sentence Filter</span>
+            <span id="sim-decision-badge" class="font-mono px-2 py-0.5 rounded text-xs font-bold"></span>
+          </div>
+
+          <div class="space-y-2 p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-subtle)]">
+            <div class="flex justify-between font-mono">
+              <span>Target Match:</span>
+              <span id="sim-target-slug" class="text-sky-300 font-semibold"></span>
+            </div>
+            <div class="flex justify-between font-mono">
+              <span>Composite Score (Threshold 0.35):</span>
+              <span id="sim-total-score" class="font-bold"></span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div id="sim-score-bar" class="h-full bg-sky-400 transition-all duration-300" style="width: 82%"></div>
+            </div>
+            <div id="sim-signal-breakdown" class="grid grid-cols-2 gap-1 pt-1 font-mono text-[11px] text-[var(--text-muted)]"></div>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="text-[var(--text-muted)] font-medium">Sentence-Level Deduplication Log:</div>
+            <div id="sim-sentence-log" class="space-y-1.5 font-mono text-[11px]"></div>
+          </div>
+        </div>
+
+        <!-- Col 3: Resulting Disk Files -->
+        <div class="lg:col-span-4 rounded-xl p-4 bg-[var(--bg-sidebar)] border border-[var(--border-subtle)] space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-emerald-300">③ Resulting Files in <code>vault/</code></span>
+            <span id="sim-wiki-path" class="font-mono text-[11px] text-emerald-300"></span>
+          </div>
+          <div class="space-y-1">
+            <div class="text-[var(--text-muted)]">Compiled Markdown Page &amp; Diff Snapshot:</div>
+            <pre id="sim-output-markdown" class="font-mono text-xs whitespace-pre-wrap p-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-subtle)] leading-relaxed max-h-72 overflow-y-auto"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: HOW THE FRONTEND DISPLAYS & QUERIES DATA -->
+    <section id="ui-flow" class="space-y-4">
+      <div class="space-y-1">
+        <h2 class="text-xl font-bold tracking-tight">5. How the Web UI Fetches &amp; Displays the Compiled Knowledge Base</h2>
+        <p class="text-xs text-[var(--text-muted)]">
+          The single-page studio in <code>frontend/index.html</code> + <code>frontend/app.js</code> communicates with FastAPI in <code>backend/app.py</code> through 11 JSON endpoints.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-sky-300">1. Wiki Explorer &amp; Diff Drawer</span>
+            <code class="text-[11px] text-[var(--text-muted)]">GET /api/pages/{slug}</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Loads the compiled page's YAML metadata, rendered Markdown body (converting <code>[[slug|Label]]</code> into clickable internal navigation pills), outbound links, incoming backlinks, raw source badges, and the <code>.history/&lt;slug&gt;/*.json</code> revision timeline with color-coded unified diffs.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-purple-300">2. Force-Directed Graph Canvas</span>
+            <code class="text-[11px] text-[var(--text-muted)]">GET /api/graph</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Computes every node (sized by degree + revision count, colored by category) and two edge layers: solid <strong>explicit <code>[[wikilink]]</code> edges</strong> and dashed <strong>semantic similarity edges</strong>. Rendered interactively on an HTML5 <code>&lt;canvas&gt;</code> with repulsion/spring physics, zoom/pan, and click-to-inspect.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-emerald-300">3. Similarity-First Ingest Studio</span>
+            <code class="text-[11px] text-[var(--text-muted)]">POST /api/ingest/preview</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Before writing a single byte to <code>vault/wiki/</code>, the UI previews each extracted candidate topic with its 4-signal similarity breakdown bar and recommended action (<code>UPDATE [[existing-slug]]</code> vs <code>CREATE new page</code>), plus a manual target override selector.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-amber-300">4. Self-Healing Linter Center</span>
+            <code class="text-[11px] text-[var(--text-muted)]">POST /api/lint/heal</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Displays the 0–100% Vault Health Score and lists unlinked entity mentions, orphan pages, dangling wikilinks, and near-duplicate page pairs (`>= threshold`), allowing one-click automatic link weaving, stub creation, or explicit page merging (`POST /api/merge`).
+          </p>
+        </div>
+
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-rose-300">5. Grounded Chat &amp; File-to-Wiki</span>
+            <code class="text-[11px] text-[var(--text-muted)]">POST /api/chat</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Retrieves the top wiki pages via <code>HybridSimilarityEngine.search()</code>, extracts pinpoint technical sentences for the <strong>Direct Answer</strong>, surfaces any <code>## Contradictions &amp; Tensions</code>, and lets you click <strong>File Answer into Wiki</strong> (<code>POST /api/chat/file-to-wiki</code>) so valuable Q&amp;A syntheses compound back into the vault.
+          </p>
+        </div>
+
+        <div class="rounded-xl p-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-indigo-300">6. Live Provider Switcher</span>
+            <code class="text-[11px] text-[var(--text-muted)]">POST /api/settings</code>
+          </div>
+          <p class="text-[var(--text-muted)]">
+            Switch at runtime between <strong>Google Gemini (`gemini-3.5-flash-lite`)</strong>, <strong>OpenAI-compatible endpoints</strong>, <strong>Ollama local models</strong>, and <strong>Smart Offline Synthesis (`local_smart`)</strong>, and tune the similarity threshold (`0.35`) live.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: VERIFIED BENCHMARK SUMMARY TABLE -->
+    <section id="benchmarks" class="space-y-4">
+      <div class="space-y-1">
+        <h2 class="text-xl font-bold tracking-tight">6. Verified Benchmark Results Across English (SQuAD, TeleQuAD) &amp; Japanese (JaQuAD)</h2>
+        <p class="text-xs text-[var(--text-muted)]">
+          All benchmarks below were executed in this workspace comparing <strong>Stateless Vector RAG (<code>intfloat/multilingual-e5-large</code>)</strong> against <strong>LLM Wiki Consolidation</strong> and <strong>Hybrid Fusion</strong>.
+        </p>
+      </div>
+
+      <div tabindex="0" role="region" aria-labelledby="bench-table-caption" class="table-wrapper">
+        <table style="--label-2: 'Scale &amp; Redundancy'; --label-3: 'Vault Consolidation'; --label-4: 'E5-Large Raw R@1 / R@10'; --label-5: 'LLM Wiki R@1 / R@10'; --label-6: 'Hybrid R@1 / R@10'; --label-7: 'Top-10 Wasted Slots (E5 vs Wiki)';">
+          <caption id="bench-table-caption" class="sr-only">Verified benchmark comparison across SQuAD, TeleQuAD, and JaQuAD</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dataset &amp; Language</th>
+              <th scope="col">Scale &amp; Redundancy</th>
+              <th scope="col">Vault Consolidation</th>
+              <th scope="col">E5-Large Raw (R@1 / R@10)</th>
+              <th scope="col">LLM Wiki (R@1 / R@10)</th>
+              <th scope="col">Hybrid Wiki+E5 (R@1 / R@10)</th>
+              <th scope="col">Top-10 Wasted Duplicate Slots</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Full TeleQuAD 1x (English 3GPP)</th>
+              <td>536 passages • 4,485 QAs (1x)</td>
+              <td>536 canonical pages</td>
+              <td>50.06% / 78.08%</td>
+              <td class="text-sky-300 font-semibold">76.05% / 95.85%</td>
+              <td class="text-emerald-300 font-semibold">79.46% / 97.68%</td>
+              <td>0.0% vs 0.0% (1x baseline)</td>
+            </tr>
+            <tr>
+              <th scope="row">Full TeleQuAD 10x (Blind Wave Stream)</th>
+              <td>5,360 passages • 4,485 QAs (10x)</td>
+              <td>5,360 → <strong>548 pages</strong> (99.67% dedup)</td>
+              <td>52.91% / 64.24% (↓13.84%)</td>
+              <td class="text-sky-300 font-semibold">76.12% / 95.85%</td>
+              <td class="text-emerald-300 font-semibold">77.64% / 96.72%</td>
+              <td class="text-rose-300 font-semibold">79.86% (E5) vs <span class="text-emerald-300">4.16% (Wiki)</span></td>
+            </tr>
+            <tr>
+              <th scope="row">JaQuAD 1x (Japanese Wikipedia)</th>
+              <td>407 passages • 1,029 QAs (1x)</td>
+              <td>407 canonical pages</td>
+              <td>74.44% / 98.54%</td>
+              <td class="text-sky-300 font-semibold">81.54% / 98.64%</td>
+              <td class="text-emerald-300 font-semibold">86.20% / 99.71%</td>
+              <td>0.0% vs 0.0% (1x baseline)</td>
+            </tr>
+            <tr>
+              <th scope="row">JaQuAD 5x (Japanese Blind Waves)</th>
+              <td>2,035 passages • 1,029 QAs (5x)</td>
+              <td>2,035 → <strong>407 pages</strong> (99.94% dedup)</td>
+              <td>80.37% / 97.28% (R@3: 88.05%)</td>
+              <td class="text-sky-300 font-semibold">81.44% / 98.74% (R@3: 94.75%)</td>
+              <td class="text-emerald-300 font-semibold">84.55% / 99.71% (R@3: 97.08%)</td>
+              <td class="text-rose-300 font-semibold">65.79% (E5) vs <span class="text-emerald-300">0.00% (Wiki)</span></td>
+            </tr>
+            <tr>
+              <th scope="row">SQuAD 100 + Counterfactual Updates</th>
+              <td>100 passages (4x) + 4 fake revisions</td>
+              <td>100 → <strong>25 pages</strong> (100% dedup)</td>
+              <td>—</td>
+              <td class="text-sky-300 font-semibold">95.2% R@1 / 100% R@3</td>
+              <td>—</td>
+              <td>0% bloat • 100% counterfactual QA accuracy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Modern Web Guidance: Accordion Expand/Collapse All with commandfor fallback
+    document.addEventListener("command", event => {
+      if (event.command !== "--toggle-all") return;
+      const expand = event.source.getAttribute("aria-expanded") !== "true";
+      for (const details of event.target.querySelectorAll(":scope > details")) {
+        details.open = expand;
+      }
+    }, { capture: true });
+
+    if (!Object.hasOwn(HTMLButtonElement.prototype, "commandForElement")) {
+      for (const btn of document.querySelectorAll('[command="--toggle-all"]')) {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("commandfor");
+          const container = targetId ? document.getElementById(targetId) : null;
+          if (!container) return;
+          const expand = btn.getAttribute("aria-expanded") !== "true";
+          for (const details of container.querySelectorAll(":scope > details")) {
+            details.open = expand;
+          }
+          btn.setAttribute("aria-expanded", String(expand));
+        });
+      }
+    }
+
+    document.addEventListener("toggle", event => {
+      if (!(event.target instanceof HTMLElement) || !event.target.matches(".accordion > details")) return;
+      const accordion = event.target.parentElement;
+      if (!accordion) return;
+      const button = accordion.querySelector(':scope > div [command="--toggle-all"], :scope > [command="--toggle-all"]');
+      if (!button) return;
+      const items = accordion.querySelectorAll(":scope > details");
+      const allOpen = Array.prototype.every.call(items, d => d.open);
+      button.setAttribute("aria-expanded", String(allOpen));
+    }, { capture: true });
+
+    // Interactive Ingestion Scenario Simulator Data
+    const SCENARIOS = {
+      dup: {
+        rawPath: "vault/raw/20261114-telequad-t042-w08.md",
+        title: "3GPP Working Group Archive Memo #08-042 (Blind Title)",
+        body: "In 3GPP TS 38.401, the gNB consists of a gNB-CU and one or more gNB-DUs. The gNB-CU and gNB-DU are connected via the F1 logical interface. One gNB-DU is connected to only one gNB-CU for resiliency and load sharing.",
+        decision: "UPDATE (0 Bloat Added)",
+        decisionClass: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40",
+        targetSlug: "[[ts-38-401-gnb-cu-du-architecture]]",
+        totalScore: "0.78 (>= 0.35)",
+        barWidth: "78%",
+        signals: [
+          "Title/Alias: 0.14 (Blind Title)",
+          "BM25 Lexical: 0.94",
+          "TF-IDF Cosine: 0.96 (Near-Dup Body)",
+          "Body Containment: 1.00 (100%)"
+        ],
+        sentenceLog: [
+          { status: "SKIP", text: "In 3GPP TS 38.401, the gNB consists of a gNB-CU... (token overlap 1.00 >= 0.78)" },
+          { status: "SKIP", text: "The gNB-CU and gNB-DU are connected via the F1... (token overlap 1.00 >= 0.78)" },
+          { status: "SKIP", text: "One gNB-DU is connected to only one gNB-CU... (bigram containment 1.00 >= 0.75)" }
+        ],
+        wikiPath: "vault/wiki/concepts/ts-38-401-gnb-cu-du-architecture.md",
+        outputMarkdown: `---
+title: TS 38.401 — gNB-CU and gNB-DU Split Architecture
+slug: ts-38-401-gnb-cu-du-architecture
+category: concepts
+sources:
+  - telequad-t042-w01.md
+  - telequad-t042-w08.md   # <-- Source logged!
+revision_count: 8          # <-- Incremented!
+---
+# TS 38.401 — gNB-CU and gNB-DU Split Architecture
+
+In 3GPP TS 38.401, the gNB consists of a gNB-CU and one or more gNB-DUs.
+The gNB-CU and gNB-DU are connected via the F1 logical interface.
+One gNB-DU is connected to only one gNB-CU.
+
+# (0 duplicate paragraphs appended — page stays 100% clean!)`
+      },
+      counterfactual: {
+        rawPath: "vault/raw/20261114-nikola-tesla-chronos9.md",
+        title: "Nikola Tesla: Declassified 1904 Project Chronos-9 Notes",
+        body: "Nikola Tesla was born in Smiljan in 1856.\n\nContrary to standard biographies of Nikola Tesla, declassified 1904 Project Chronos-9 notebooks reveal that Tesla constructed an experimental subharmonic resonator codenamed AURORA-TESLA-99 operating at 47.3 TeraHertz with Dr. Elowen Vance.",
+        decision: "UPDATE (Novel Fact + Tension Merged)",
+        decisionClass: "bg-amber-500/20 text-amber-300 border border-amber-500/40",
+        targetSlug: "[[nikola-tesla]]",
+        totalScore: "0.71 (>= 0.35)",
+        barWidth: "71%",
+        signals: [
+          "Title/Alias: 0.86 (Substring Match)",
+          "BM25 Lexical: 0.72",
+          "TF-IDF Cosine: 0.58",
+          "Graph/Tag Jaccard: 0.50"
+        ],
+        sentenceLog: [
+          { status: "SKIP", text: "Nikola Tesla was born in Smiljan in 1856. (already in body, 0 new numbers)" },
+          { status: "KEEP", text: "Contrary to standard biographies... 47.3 TeraHertz... (novel numbers {1904, 9, 99, 47.3} + marker 'contrary to')" }
+        ],
+        wikiPath: "vault/wiki/entities/nikola-tesla.md + .history/nikola-tesla/...",
+        outputMarkdown: `## Evolution & Synthesized Updates
+
+- **[2026-11-14 | nikola-tesla-chronos9.md]** (Nikola Tesla: Declassified 1904 Project Chronos-9 Notes):
+  Contrary to standard biographies of [[nikola-tesla|Nikola Tesla]], declassified 1904 Project Chronos-9
+  notebooks reveal that Tesla constructed an experimental subharmonic resonator codenamed AURORA-TESLA-99
+  operating at 47.3 TeraHertz with Dr. Elowen Vance.
+
+## Contradictions & Tensions
+
+- **[2026-11-14 | nikola-tesla-chronos9.md]** Potential tension/nuance noted: Contrary to standard biographies...`
+      },
+      japanese: {
+        rawPath: "vault/raw/20261114-東京タワーの構造と2026年改訂記録.md",
+        title: "東京タワーの構造と2026年改訂記録",
+        body: "東京タワー（とうきょうタワー）は、東京都港区芝公園にある総合電波塔である。1958年12月23日に完工し、高さは333メートルである。しかし、2026年の特別改訂記録では、試験用の量子アンテナ「CHRONO-JA9」が頂部に追加され、実効高が341.5メートルに更新された。",
+        decision: "UPDATE (Japanese CJK Synthesis)",
+        decisionClass: "bg-purple-500/20 text-purple-300 border border-purple-500/40",
+        targetSlug: "[[東京タワー]]",
+        totalScore: "0.74 (>= 0.35)",
+        barWidth: "74%",
+        signals: [
+          "Title/Alias: 0.82 (CJK Substring)",
+          "BM25 Kanji/Kana: 0.79",
+          "TF-IDF Cosine: 0.68",
+          "Counter Numbers: {2026, 9, 341.5}"
+        ],
+        sentenceLog: [
+          { status: "SKIP", text: "東京タワーは、東京都港区芝公園にある総合電波塔である。(overlap 1.00 >= 0.78)" },
+          { status: "SKIP", text: "1958年12月23日に完工し、高さは333メートルである。(overlap 1.00 >= 0.78)" },
+          { status: "KEEP", text: "しかし、2026年の特別改訂記録では...実効高が341.5メートルに更新された。(novel numbers {2026, 341.5} + marker 'しかし')" }
+        ],
+        wikiPath: "vault/wiki/concepts/東京タワー.md",
+        outputMarkdown: `---
+title: 東京タワー
+slug: 東京タワー
+revision_count: 2
+---
+# 東京タワー
+
+東京タワー（とうきょうタワー）は、東京都港区芝公園にある総合電波塔である。1958年12月23日に完工し、高さは333メートルである。
+
+## Evolution & Synthesized Updates
+
+- **[2026-11-14 | ja-wiki-2]** (東京タワーの構造と2026年改訂記録): しかし、2026年の特別改訂記録では、試験用の量子アンテナ「CHRONO-JA9」が頂部に追加され、実効高が341.5メートルに更新された。
+
+## Contradictions & Tensions
+
+- **[2026-11-14 | ja-wiki-2]** Potential tension/nuance noted: しかし、2026年の特別改訂記録では...`
+      },
+      create: {
+        rawPath: "vault/raw/20261114-quantum-lattice-routing.md",
+        title: "Quantum Lattice Routing in Photonic Mesh Networks",
+        body: "Quantum Lattice Routing (QLR) is a fault-tolerant entanglement swapping protocol for photonic mesh networks. It links distributed quantum repeaters while referencing [[llm-wiki-pattern|LLM Wiki Pattern]] for topology state logging.",
+        decision: "CREATE NEW PAGE (< 0.35)",
+        decisionClass: "bg-sky-500/20 text-sky-300 border border-sky-500/40",
+        targetSlug: "[[quantum-lattice-routing-in-photonic-mesh-networks]]",
+        totalScore: "0.14 (< 0.35 Threshold)",
+        barWidth: "14%",
+        signals: [
+          "Title/Alias: 0.08",
+          "BM25 Lexical: 0.19",
+          "TF-IDF Cosine: 0.12",
+          "Graph/Tag Jaccard: 0.16"
+        ],
+        sentenceLog: [
+          { status: "NEW", text: "Best existing match scored 0.14 (< 0.35 threshold) -> Creates new canonical Markdown file in vault/wiki/concepts/ and auto-weaves outbound [[wikilinks]]." }
+        ],
+        wikiPath: "vault/wiki/concepts/quantum-lattice-routing-in-photonic-mesh-networks.md",
+        outputMarkdown: `---
+title: Quantum Lattice Routing in Photonic Mesh Networks
+slug: quantum-lattice-routing-in-photonic-mesh-networks
+category: concepts
+tags:
+  - quantum
+  - lattice
+  - routing
+  - photonic
+sources:
+  - 20261114-quantum-lattice-routing.md
+revision_count: 1
+---
+# Quantum Lattice Routing in Photonic Mesh Networks
+
+Quantum Lattice Routing (QLR) is a fault-tolerant entanglement swapping protocol for photonic mesh networks.
+It links distributed quantum repeaters while referencing [[llm-wiki-pattern|LLM Wiki Pattern]] for topology state logging.`
+      }
+    };
+
+    function renderScenario(key) {
+      const s = SCENARIOS[key];
+      if (!s) return;
+      document.getElementById("sim-raw-path").textContent = s.rawPath;
+      document.getElementById("sim-input-title").textContent = s.title;
+      document.getElementById("sim-input-body").textContent = s.body;
+
+      const badge = document.getElementById("sim-decision-badge");
+      badge.textContent = s.decision;
+      badge.className = "font-mono px-2 py-0.5 rounded text-xs font-bold " + s.decisionClass;
+
+      document.getElementById("sim-target-slug").textContent = s.targetSlug;
+      document.getElementById("sim-total-score").textContent = s.totalScore;
+      document.getElementById("sim-score-bar").style.width = s.barWidth;
+
+      const sigEl = document.getElementById("sim-signal-breakdown");
+      sigEl.innerHTML = s.signals.map(item => `<div class="px-2 py-1 rounded bg-[var(--bg-sidebar)]">${item}</div>`).join("");
+
+      const logEl = document.getElementById("sim-sentence-log");
+      logEl.innerHTML = s.sentenceLog.map(row => {
+        const pill = row.status === "SKIP"
+          ? `<span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">SKIP</span>`
+          : row.status === "KEEP"
+          ? `<span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">KEEP</span>`
+          : `<span class="px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">CREATE</span>`;
+        return `<div class="p-2 rounded bg-[var(--bg-card)] border border-[var(--border-subtle)] flex items-start gap-2">${pill}<span>${row.text}</span></div>`;
+      }).join("");
+
+      document.getElementById("sim-wiki-path").textContent = s.wikiPath;
+      document.getElementById("sim-output-markdown").textContent = s.outputMarkdown;
+
+      for (const btn of document.querySelectorAll(".scenario-btn")) {
+        const active = btn.getAttribute("data-scenario") === key;
+        btn.className = active
+          ? "scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-sky-500 text-slate-950 transition"
+          : "scenario-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--bg-sidebar)] text-[var(--text-muted)] border border-[var(--border-subtle)] hover:text-[var(--text-main)] transition";
+      }
+    }
+
+    for (const btn of document.querySelectorAll(".scenario-btn")) {
+      btn.addEventListener("click", () => renderScenario(btn.getAttribute("data-scenario")));
+    }
+    renderScenario("dup");
+  </script>
+</body>
+</html>
+
