@@ -1226,6 +1226,10 @@ document.getElementById("btn-open-settings").addEventListener("click", async () 
   document.getElementById("setting-openai-key").value = s.openai_api_key || "";
   document.getElementById("setting-openai-url").value = s.openai_base_url || "https://api.openai.com/v1";
   document.getElementById("setting-openai-model").value = s.openai_model || "gpt-4o-mini";
+  const customHeaders = s.openai_custom_headers && Object.keys(s.openai_custom_headers).length
+    ? JSON.stringify(s.openai_custom_headers, null, 2)
+    : "";
+  document.getElementById("setting-openai-headers").value = customHeaders;
   document.getElementById("setting-ollama-url").value = s.ollama_base_url || "http://127.0.0.1:11434";
   document.getElementById("setting-ollama-model").value = s.ollama_model || "llama3.2";
   document.getElementById("setting-sim-threshold").value = s.similarity_threshold;
@@ -1241,6 +1245,23 @@ document.getElementById("btn-cancel-settings").addEventListener("click", () => {
 
 document.getElementById("settings-form").addEventListener("submit", async (e) => {
   e.preventDefault();
+  let parsedHeaders = {};
+  const rawHeaders = document.getElementById("setting-openai-headers").value.trim();
+  if (rawHeaders) {
+    try {
+      const candidate = JSON.parse(rawHeaders);
+      if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) {
+        alert("Custom Headers must be a JSON object, e.g. {\"sid\": \"...\", \"env\": \"...\"}");
+        return;
+      }
+      parsedHeaders = Object.fromEntries(
+        Object.entries(candidate).map(([k, v]) => [String(k), String(v)])
+      );
+    } catch (err) {
+      alert(`Invalid Custom Headers JSON: ${err.message}`);
+      return;
+    }
+  }
   applyThemePreference(document.getElementById("setting-theme").value);
   await api("/api/settings", {
     method: "POST",
@@ -1251,6 +1272,7 @@ document.getElementById("settings-form").addEventListener("submit", async (e) =>
       openai_api_key: document.getElementById("setting-openai-key").value,
       openai_base_url: document.getElementById("setting-openai-url").value,
       openai_model: document.getElementById("setting-openai-model").value,
+      openai_custom_headers: parsedHeaders,
       ollama_base_url: document.getElementById("setting-ollama-url").value,
       ollama_model: document.getElementById("setting-ollama-model").value,
       similarity_threshold: Number(document.getElementById("setting-sim-threshold").value),

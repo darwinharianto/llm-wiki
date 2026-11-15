@@ -80,6 +80,7 @@ class SettingsUpdateRequest(BaseModel):
     openai_api_key: str | None = None
     openai_base_url: str | None = None
     openai_model: str | None = None
+    openai_custom_headers: dict[str, str] | None = None
     ollama_base_url: str | None = None
     ollama_model: str | None = None
     similarity_threshold: float | None = Field(default=None, ge=0.1, le=0.95)
@@ -318,6 +319,7 @@ def create_app(
         data["active_model"] = engine.llm.active_model_name()
         data["has_gemini_key"] = bool(engine.settings.gemini_api_key)
         data["has_openai_key"] = bool(engine.settings.openai_api_key)
+        data["has_openai_custom_headers"] = bool(engine.settings.openai_custom_headers)
         data["gemini_api_key"] = "••••" + engine.settings.gemini_api_key[-4:] if engine.settings.gemini_api_key else ""
         data["openai_api_key"] = "••••" + engine.settings.openai_api_key[-4:] if engine.settings.openai_api_key else ""
         data["llm_stats"] = dict(engine.llm.stats)

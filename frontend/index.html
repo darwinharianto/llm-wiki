@@ -304,6 +304,10 @@
         <label for="setting-openai-model">OpenAI Model</label>
         <input type="text" id="setting-openai-model" value="gpt-4o-mini">
       </div>
+      <div class="field provider-field" data-provider="openai">
+        <label for="setting-openai-headers">Custom Headers JSON (optional, e.g. sid / env / special_no)</label>
+        <textarea id="setting-openai-headers" rows="2" placeholder='{"sid": "...", "env": "...", "x-special-no": "..."}'></textarea>
+      </div>
 
       <div class="field provider-field" data-provider="ollama">
         <label for="setting-ollama-url">Ollama Base URL</label>

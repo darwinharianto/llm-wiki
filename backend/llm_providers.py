@@ -86,10 +86,22 @@ class LLMService:
             self._gemini_client = genai.Client(api_key=self.settings.gemini_api_key)
         return self._gemini_client
 
+    def _openai_headers(self) -> dict[str, str]:
+        headers = {
+            str(k): str(v)
+            for k, v in (self.settings.openai_custom_headers or {}).items()
+            if str(k).strip()
+        }
+        if self.settings.openai_api_key:
+            headers.setdefault("Authorization", f"Bearer {self.settings.openai_api_key}")
+        return headers
+
     def active_mode(self) -> str:
         if self.settings.provider == "gemini" and self.settings.gemini_api_key:
             return "gemini"
-        if self.settings.provider == "openai" and self.settings.openai_api_key:
+        if self.settings.provider == "openai" and (
+            self.settings.openai_api_key or self.settings.openai_custom_headers
+        ):
             return "openai"
         if self.settings.provider == "ollama":
             return "ollama"
@@ -610,7 +622,7 @@ class LLMService:
                 messages.append({"role": "user", "content": prompt})
                 resp = httpx.post(
                     f"{self.settings.openai_base_url.rstrip('/')}/chat/completions",
-                    headers={"Authorization": f"Bearer {self.settings.openai_api_key}"},
+                    headers=self._openai_headers(),
                     json={
                         "model": model_name,
                         "messages": messages,
@@ -737,7 +749,7 @@ class LLMService:
                 self.stats["last_model"] = model_name
                 resp = httpx.post(
                     f"{self.settings.openai_base_url.rstrip('/')}/chat/completions",
-                    headers={"Authorization": f"Bearer {self.settings.openai_api_key}"},
+                    headers=self._openai_headers(),
                     json={
                         "model": model_name,
                         "messages": [

@@ -369,4 +369,75 @@ def test_telemetry_observability_tokens_cost_and_dedup_savings(tmp_path: Path) -
         assert reset_res["totals"]["total_events"] == 0
 
 
+def test_openai_custom_headers_without_api_key(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("LLM_WIKI_PROVIDER", raising=False)
+    monkeypatch.setenv(
+        "OPENAI_CUSTOM_HEADERS",
+        '{"sid": "svc-123", "env": "prod", "x-special-no": "9988"}',
+    )
+
+    cfg = RuntimeSettings.from_env()
+    assert cfg.provider == "openai"
+    assert cfg.openai_custom_headers == {
+        "sid": "svc-123",
+        "env": "prod",
+        "x-special-no": "9988",
+    }
+
+    client, _vault_dir = _make_isolated_client(tmp_path)
+    with client:
+        res = client.post(
+            "/api/settings",
+            json={
+                "provider": "openai",
+                "openai_api_key": "",
+                "openai_base_url": "https://gateway.internal/v1",
+                "openai_model": "internal-gpt",
+                "openai_custom_headers": {
+                    "sid": "svc-123",
+                    "env": "prod",
+                    "x-special-no": "9988",
+                },
+            },
+        )
+        assert res.status_code == 200
+        body = res.json()
+        assert body["active_mode"] == "openai"
+        assert body["has_openai_custom_headers"] is True
+
+        captured: dict = {}
+
+        class _FakeResp:
+            def raise_for_status(self) -> None:
+                return None
+
+            def json(self) -> dict:
+                return {
+                    "choices": [{"message": {"content": "Gateway OK"}}],
+                    "usage": {"prompt_tokens": 12, "completion_tokens": 3, "total_tokens": 15},
+                }
+
+        def _fake_post(url, headers=None, json=None, timeout=None):
+            captured["url"] = url
+            captured["headers"] = headers
+            captured["json"] = json
+            return _FakeResp()
+
+        import backend.llm_providers as lp
+
+        monkeypatch.setattr(lp.httpx, "post", _fake_post)
+        text = client.app.state.engine.llm._call_text_llm("Hello gateway")
+        assert text == "Gateway OK"
+        assert captured["url"] == "https://gateway.internal/v1/chat/completions"
+        assert captured["headers"] == {
+            "sid": "svc-123",
+            "env": "prod",
+            "x-special-no": "9988",
+        }
+        assert "Authorization" not in captured["headers"]
+
+
+
 
